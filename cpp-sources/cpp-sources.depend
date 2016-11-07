@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1478505975 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/reals-generator.cpp
+	<iostream>
+	<cstdlib>
+	<fstream>
+
