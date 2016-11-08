@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-int main() {
+void realsGenerator() {
     ofstream realsFile;
     realsFile.open ("../data/reals");
 
@@ -15,6 +15,4 @@ int main() {
     }
 
     realsFile.close();
-
-    return 0;
 }

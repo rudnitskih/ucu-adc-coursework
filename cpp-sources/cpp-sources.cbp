@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="reals-generator.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
