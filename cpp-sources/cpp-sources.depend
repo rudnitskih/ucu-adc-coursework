@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1478586885 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/reals-generator.cpp
+1478857312 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/reals-generator.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
@@ -9,14 +9,28 @@
 	<cstdlib>
 	<fstream>
 
-1478590708 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
+1478852606 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
 	<iostream>
 	"generator.h"
+	"sorter.h"
 
 1478589486 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/dates-generator.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
 
-1478589818 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.h
+1478852466 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.h
+
+1478852224 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.h
+
+1478857251 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
+	<iostream>
+	<vector>
+
+1478857015 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.cpp
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<string>
+	<vector>
 

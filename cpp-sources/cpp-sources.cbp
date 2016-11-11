@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="dates-generator.cpp" />
+		<Unit filename="generator.h" />
+		<Unit filename="main.cpp" />
 		<Unit filename="reals-generator.cpp" />
 		<Extensions>
 			<code_completion />
