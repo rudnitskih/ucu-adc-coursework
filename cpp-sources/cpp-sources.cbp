@@ -31,10 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="dates-generator.cpp" />
-		<Unit filename="generator.h" />
+		<Unit filename="declaration.h" />
+		<Unit filename="generator.cpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="reals-generator.cpp" />
+		<Unit filename="quicksort.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

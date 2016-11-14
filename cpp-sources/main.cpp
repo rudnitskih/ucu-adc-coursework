@@ -1,53 +1,30 @@
 #include <iostream>
-#include "generator.h"
-#include "sorter.h"
-
-void generator() {
-    int type;
-
-    std::cout << "Type of data:\n 1 - Reals \n 2 - Dates \n Your chose:  ";
-    std::cin >> type;
-
-    switch (type) {
-        case 1:
-            realsGenerator();
-
-            break;
-        case 2:
-            datesGenerator();
-
-            break;
-
-        default:
-            std::cout << "Not correct value";
-    }
-
-}
+#include "declaration.h"
 
 int main() {
-   int operation;
-   bool did = true;
+    int dataType = 1;
+    std::vector<double> reals;
+    std::vector<date> dates;
 
-   std::cout << "Choose function:\n 1 - Generator \n 2 - Sorting \n";
+    std::cout << "Choose data:\n 1 - Reals \n 2 - Dates \n";
+    std::cin >> dataType;
 
-   do {
-       std::cin >> operation;
-
-       switch (operation) {
-            case 1:
-                generator();
-
-                break;
-            case 2:
-                sortData();
-                break;
-
-            default:
-                did = false;
-
+    switch (dataType) {
+        case 1: {
+            generator(4, reals);
+            quickSort(reals);
+            break;
         }
-        did;
-   } while (!did);
+
+
+        case 2: {
+            generator(4, dates);
+            quickSort(dates);
+
+
+            break;
+        }
+    }
 
    return 0;
 }

@@ -1,36 +1,48 @@
 # depslib dependency file v1.0
-1478857312 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/reals-generator.cpp
+1479158715 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/reals-generator.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
+	<vector>
+	"declaration.h"
 
-1478591426 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/dates-generator.cpp
+1479158909 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/dates-generator.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
+	<vector>
 
-1478852606 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
+1479157815 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
 	<iostream>
-	"generator.h"
-	"sorter.h"
+	"declaration.h"
 
 1478589486 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/dates-generator.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
 
-1478852466 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.h
+1479157701 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.h
 
-1478852224 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.h
+1479157663 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.h
 
-1478857251 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
+1479158854 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
 	<iostream>
 	<vector>
+	"declaration.h"
 
-1478857015 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.cpp
+1479158879 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.cpp
 	<iostream>
 	<cstdlib>
 	<fstream>
 	<string>
+	<vector>
+	<algorithm>
+	<iterator>
+	<regex>
+	"declaration.h"
+
+1478933188 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/utils.h
+
+1479158942 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/declaration.h
 	<vector>
 
