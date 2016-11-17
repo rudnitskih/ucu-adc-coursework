@@ -11,14 +11,14 @@ int main() {
 
     switch (dataType) {
         case 1: {
-            generator(4, reals);
+            generator(5, reals);
             quickSort(reals);
             break;
         }
 
 
         case 2: {
-            generator(4, dates);
+            generator(5, dates);
             quickSort(dates);
 
 

@@ -12,7 +12,7 @@
 	<fstream>
 	<vector>
 
-1479157815 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
+1479370162 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
 	<iostream>
 	"declaration.h"
 
@@ -25,7 +25,7 @@
 
 1479157663 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.h
 
-1479158854 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
+1479371357 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
 	<iostream>
 	<vector>
 	"declaration.h"
@@ -45,4 +45,9 @@
 
 1479158942 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/declaration.h
 	<vector>
+
+1479159194 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.cpp
+	<iostream>
+	<vector>
+	"declaration.h"
 
