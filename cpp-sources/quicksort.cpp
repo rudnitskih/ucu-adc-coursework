@@ -13,8 +13,32 @@ void print_vector(std::vector<date> &array, int n) {
         std::cout << array[i].day << "/" << array[i].month << "/" << array[i].year << std::endl;
 }
 
-void compare_dates(date a, date b, int order = 0) {
-
+int compare_dates(date a, date b) {
+    if (a.year < b.year) {
+        return -1;
+    } else {
+        if (a.year == b.year) {
+            if (a.month < b.month) {
+                return -1;
+            } else {
+                if (a.month == b.month) {
+                    if (a.day < a.day) {
+                        return -1;
+                    } else {
+                        if (a.day == a.day) {
+                            return 0;
+                        } else {
+                            return 1;
+                        }
+                    }
+                } else {
+                    return 1;
+                }
+            }
+        } else {
+            return 1;
+        }
+    }
 }
 
 void algorithm(std::vector<double> &array, int left, int right) {
@@ -53,15 +77,11 @@ void dates_algorithm(std::vector<date> &array, int left, int right) {
     date temp;
 
     while (i <= j) {
-        while (    array[i].year < pivot.year
-                || array[i].month < pivot.month
-                || array[i].day < pivot.day) {
+        while (compare_dates(array[i], pivot) == -1) {
              i++;
             }
 
-        while (    array[j].year > pivot.year
-                || array[j].month > pivot.month
-                || array[j].day > pivot.day) {
+        while (compare_dates(array[j], pivot) == 1) {
             j--;
         }
 
