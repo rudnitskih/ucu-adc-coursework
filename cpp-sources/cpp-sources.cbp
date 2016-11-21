@@ -35,6 +35,7 @@
 		<Unit filename="generator.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="quicksort.cpp" />
+		<Unit filename="utils.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

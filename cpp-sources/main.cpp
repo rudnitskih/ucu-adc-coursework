@@ -1,5 +1,7 @@
 #include <iostream>
+
 #include "declaration.h"
+#include "quicksort.h"
 
 int main() {
     int dataType = 1;
@@ -12,16 +14,13 @@ int main() {
     switch (dataType) {
         case 1: {
             generator(5, reals);
-            quickSort(reals);
+            quicksort(reals);
             break;
         }
 
-
         case 2: {
             generator(5, dates);
-            quickSort(dates);
-
-
+            quicksort(dates);
             break;
         }
     }
