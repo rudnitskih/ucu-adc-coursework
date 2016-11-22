@@ -2,6 +2,7 @@
 #define DECLARATION_H_INCLUDED
 
 #include <vector>
+#include <typeinfo>
 
 struct date {
     int day;
@@ -9,11 +10,12 @@ struct date {
     int year;
 };
 
-struct operations {
+struct algorithmPerformance {
     int cmp;
     int mov;
     int ovh;
-}
+    double time;
+};
 
 void generator(long, std::vector<double>&);
 void generator(long, std::vector<date>&);
@@ -22,9 +24,10 @@ std::ostream& operator << (std::ostream &, date &);
 int compare_dates(date, date);
 
 template <typename T>
-void print_vector(std::vector<T> &array, unsigned n) {
-    for (unsigned i = 0; i < n && i < array.size(); ++i)
-        std::cout << array[i] << std::endl;
+void print_vector(std::vector<T> &vector, unsigned n = 10) {
+    for (typename std::vector<T>::size_type i = 0; i < n && i < vector.size(); ++i)
+        std::cout << vector[i] << std::endl;
+    std::cout << "===========================\n";
 }
 
 template <typename T>
@@ -33,14 +36,20 @@ int cmp(T x, T y) {
 }
 
 template <typename T>
-void swap(std::vector<T>& vHeap, int i, int j) {
+void swap(std::vector<T>& vector, int i, int j) {
     if(i == j)
         return;
 
     T temp;
-    temp = vHeap[i];
-    vHeap[i] = vHeap[j];
-    vHeap[j] = temp;
+    temp = vector[i];
+    vector[i] = vector[j];
+    vector[j] = temp;
+}
+
+template <typename T>
+void showSortTitle(std::string algorithmName, std::vector<T>& vector) {
+    std::cout << algorithmName << " " << typeid(T).name() << " SIZE: " << vector.size() << std::endl;
+    print_vector(vector, 10);
 }
 
 #endif // DECLARATION_H_INCLUDED

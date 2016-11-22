@@ -12,10 +12,11 @@
 	<fstream>
 	<vector>
 
-1479721534 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
+1479802057 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/main.cpp
 	<iostream>
 	"declaration.h"
 	"quicksort.h"
+	"heapsort.h"
 
 1478589486 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/dates-generator.cpp
 	<iostream>
@@ -26,11 +27,12 @@
 
 1479157663 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.h
 
-1479721012 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
+1479801829 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.cpp
 	<iostream>
 	<vector>
 	<ctime>
 	"declaration.h"
+	"quicksort.h"
 
 1479158879 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/sorter.cpp
 	<iostream>
@@ -45,8 +47,9 @@
 
 1479718985 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/utils.h
 
-1479723927 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/declaration.h
+1479801320 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/declaration.h
 	<vector>
+	<typeinfo>
 
 1479553048 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/generator.cpp
 	<iostream>
@@ -57,7 +60,19 @@
 	<iostream>
 	"declaration.h"
 
-1479723948 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.h
+1479800111 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/quicksort.h
 	<vector>
+	<iostream>
+	<vector>
+	<ctime>
 	"declaration.h"
+
+1479802175 source:/home/rudnitskih/p/ucu-adc-coursework/cpp-sources/heapsort.cpp
+	<iostream>
+	<vector>
+	<ctime>
+	"declaration.h"
+	"heapsort.h"
+
+1479800153 /home/rudnitskih/p/ucu-adc-coursework/cpp-sources/heapsort.h
 

@@ -33,9 +33,12 @@
 		</Compiler>
 		<Unit filename="declaration.h" />
 		<Unit filename="generator.cpp" />
+		<Unit filename="heapsort.cpp" />
+		<Unit filename="heapsort.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="quicksort.cpp" />
-		<Unit filename="utils.h" />
+		<Unit filename="quicksort.h" />
+		<Unit filename="utils.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

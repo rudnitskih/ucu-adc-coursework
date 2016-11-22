@@ -3,22 +3,24 @@
 #include <ctime>
 
 #include "declaration.h"
-#include "quicksort.h"
+#include "heapsort.h"
 
-void quicksort(std::vector<date> array) {
+void heapsort(std::vector<double> vector) {
     std::clock_t begin = std::clock();
-    quicksort_algorithm(array, 0, array.size() - 1, compare_dates);
+
+    heapsort_algorithm(vector, cmp);
+
     std::clock_t end = clock();
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-    //print_vector(array, 10);
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
 }
 
-void quicksort(std::vector<double> array) {
+void heapsort(std::vector<date> vector) {
     std::clock_t begin = std::clock();
-    quicksort_algorithm(array, 0, array.size() - 1, cmp);
+
+    heapsort_algorithm(vector, compare_dates);
+
     std::clock_t end = clock();
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-    //print_vector(array, 10);
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
 }
