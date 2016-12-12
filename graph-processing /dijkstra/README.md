@@ -11,12 +11,13 @@ between them. The first n rows are in format «n x y». So, for example if the s
 Your first task is to process data and find edge weights from the vertices coordinates.The real
 data set is the *usa_route.txt2*. A synthetic dataset could be generated using a random value
 generator – e.g. as suggested in Section 3.5.
-Output: Output the table of shortest distances for the outbound cities `1 … i` – see also the tasks.
+
+**Output**: Output the table of shortest distances for the outbound cities *1 … i* – see also the tasks.
  
-Constraint: 2 ≤ n ≤ 103
-.
+Constraint: 2 ≤ n ≤ 103.
+
 Tasks:
-1. Implement Straightforward and Heap-based Dijkstra’s algorithms
+1. Implement **Straightforward** and **Heap-based Dijkstra’s** algorithms
 2. Run both algorithm implementations on the input data set (specified in your variant) for
 the first 1 … i outbound vertices (i is the i-th vertex represented by the i-th row in the
 input dataset) to compute the shortest-path distances between i and every other vertex of
