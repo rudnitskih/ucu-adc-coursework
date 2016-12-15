@@ -30,7 +30,7 @@ In our variant we need to compare two algorithms - Heapsort and Quicksort for di
 ### Algorithms overivew
 #### Quicksort
 
-Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm developed by Tony Hoare in 1959, with his work published in 1961,[2] it is still a commonly used algorithm for sorting. 
+Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm developed by Tony Hoare in 1959, with his work published in 1961, it is still a commonly used algorithm for sorting. 
 
 Quicksort is a comparison sort, meaning that it can sort items of any type for which a "less-than" relation (formally, a total order) is defined. In efficient implementations it is not a stable sort, meaning that the relative order of equal sort items is not preserved. Quicksort can operate in-place on an array, requiring small additional amounts of memory to perform the sorting.
 
@@ -74,11 +74,27 @@ Heapsort can be performed in place. The array can be split into two parts, the s
 The heapsort algorithm involves preparing the list by first turning it into a max heap. The algorithm then repeatedly swaps the first value of the list with the last value, decreasing the range of values considered in the heap operation by one, and sifting the new first value into its position in the heap. This repeats until the range of considered values is one value in length.
 
 The steps are:
+
 1. Call the buildMaxHeap() function on the list. Also referred to as heapify(), this builds a heap from a list in O(n) operations.
 2. Swap the first element of the list with the final element. Decrease the considered range of the list by one.
 3. Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
 4. Go to step (2) unless the considered range of the list is one element.
 The buildMaxHeap() operation is run once, and is O(n) in performance. The siftDown() function is O(log(n)), and is called n times. Therefore, the performance of this algorithm is O(n + n * log(n)) which evaluates to O(n log n).
+
+### Theoretical performance comparation
+
+| Year | Temperature (low) | Temperature (high) |  
+| ---- | ----------------- | -------------------|  
+| 1900 |               -10 |                 25 |  
+| 1910 |               -15 |                 30 |  
+| 1920 |               -10 |                 32 |  
+
+
+|                        | Quicksort   | Heapsort    |
+| ---------------------- | ----------- | ----------- |
+| Worst-case performance |             |             |
+| Average performance    |             |             |
+| Best-case performance  |             |             |
 
 --------
 
