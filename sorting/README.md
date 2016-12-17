@@ -43,6 +43,8 @@ Here is how quicksort uses divide-and-conquer. We need to think of sorting a sub
 
 3. **Combine** by doing nothing. Once the conquer step recursively sorts, we are done. Why? All elements to the left of the pivot, in `array[p..q-1]`, are less than or equal to the pivot and are sorted, and all elements to the right of the pivot, in `array[q+1..r]`, are greater than the pivot and are sorted. The elements in `array[p..r]` can't help but be sorted!
 
+Mathematical analysis of quicksort shows that, on average, the algorithm takes O(n log n) comparisons to sort n items. In the worst case, it makes O(n2) comparisons, though this behavior is rare. Although somewhat slower in practice on most machines than a well-implemented quicksort, it has the advantage of a more favorable worst-case O(n log n) runtime. 
+
 #### Heapsort
 
 Heapsort is a comparison-based sorting algorithm. Heapsort can be thought of as an improved selection sort: like that algorithm, it divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element and moving that to the sorted region. The improvement consists of the use of a heap data structure rather than a linear-time search to find the maximum.
@@ -69,7 +71,7 @@ In the first step, a heap is built out of the data. The heap is often placed in 
 
 In the second step, a sorted array is created by repeatedly removing the largest element from the heap (the root of the heap), and inserting it into the array. The heap is updated after each removal to maintain the heap. Once all objects have been removed from the heap, the result is a sorted array.
 
-Heapsort can be performed in place. The array can be split into two parts, the sorted array and the heap. The heap's invariant is preserved after each extraction, so the only cost is that of extraction.
+Heapsort is an in-place algorithm, but it is not a stable sort. The array can be split into two parts, the sorted array and the heap. The heap's invariant is preserved after each extraction, so the only cost is that of extraction.
 
 The heapsort algorithm involves preparing the list by first turning it into a max heap. The algorithm then repeatedly swaps the first value of the list with the last value, decreasing the range of values considered in the heap operation by one, and sifting the new first value into its position in the heap. This repeats until the range of considered values is one value in length.
 
@@ -79,29 +81,35 @@ The steps are:
 2. Swap the first element of the list with the final element. Decrease the considered range of the list by one.
 3. Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
 4. Go to step (2) unless the considered range of the list is one element.
+
 The buildMaxHeap() operation is run once, and is O(n) in performance. The siftDown() function is O(log(n)), and is called n times. Therefore, the performance of this algorithm is O(n + n * log(n)) which evaluates to O(n log n).
+
+
 
 ### Theoretical performance comparation
 
-| Year | Temperature (low) | Temperature (high) |  
-| ---- | ----------------- | -------------------|  
-| 1900 |               -10 |                 25 |  
-| 1910 |               -15 |                 30 |  
-| 1920 |               -10 |                 32 |  
 
 
 |                        | Quicksort   | Heapsort    |
 | ---------------------- | ----------- | ----------- |
-| Worst-case performance |             |             |
-| Average performance    |             |             |
-| Best-case performance  |             |             |
+| Worst-case performance |    O(n2)    | O(n log(n)) |
+| Average performance    | O(n log(n)) | O(n log(n)) |
+| Best-case performance  | O(n log(n)) | O(n log(n)) |
 
---------
 
-Although somewhat slower in practice on most machines than a well-implemented quicksort, it has the advantage of a more favorable worst-case O(n log n) runtime. Heapsort is an in-place algorithm, but it is not a stable sort.
+### Conlusions
+
+Thus, when an occasional "blowout" to O(n2) is tolerable, we can expect that, on average, quick sort will provide considerably better performance - especially if one of the modified pivot choice procedures is used.
+
+Most commercial applications would use quicksort for its better average performance: they can tolerate an occasional long run (which just means that a report takes slightly longer to produce on full moon days in leap years) in return for shorter runs most of the time.
+
+However, quick sort should never be used in applications which require a guarantee of response time, unless it is treated as an O(n2) algorithm in calculating the worst-case response time. If you have to assume O(n2) time, then - if n is small, you're better off using insertion sort - which has simpler code and therefore smaller constant factors.
+
+And if n is large, you should obviously be using heap sort, for its guaranteed O(nlog n) time. Life-critical (medical monitoring, life support in aircraft and space craft) and mission-critical (monitoring and control in industrial and research plants handling dangerous materials, control for aircraft, defence, etc) software will generally have a response time as part of the system specifications. In all such systems, it is not acceptable to design based on average performance, you must always allow for the worst case, and thus treat quicksort as O(n2).
 
 ## Credits
 - https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort
 - https://en.wikipedia.org/wiki/Quicksort
 - https://en.wikipedia.org/wiki/Heapsort
 - https://en.wikipedia.org/wiki/Heap_(data_structure)
+- https://www.cs.auckland.ac.nz/~jmor159/PLDS210/qsort3.html

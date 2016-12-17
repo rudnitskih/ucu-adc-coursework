@@ -5,22 +5,38 @@
 #include "declaration.h"
 #include "heapsort.h"
 
-void heapsort(std::vector<double> vector) {
+algorithmPerformance heapsort(std::vector<double> vectorWithData) {
+    algorithmPerformance perfomance;
+
+    perfomance.records = vectorWithData.size();
+
     std::clock_t begin = std::clock();
 
-    heapsort_algorithm(vector, cmp);
+    heapsort_algorithm(vectorWithData, cmp);
 
-    std::clock_t end = clock();
-    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+    double elapsed_secs = double(clock() - begin) / CLOCKS_PER_SEC;
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
+    perfomance.time = elapsed_secs;
+
+    return perfomance;
+    //std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
 }
 
-void heapsort(std::vector<date> vector) {
+algorithmPerformance heapsort(std::vector<date> vectorWithData) {
+    algorithmPerformance perfomance;
+
+    perfomance.records = vectorWithData.size();
+
     std::clock_t begin = std::clock();
 
-    heapsort_algorithm(vector, compare_dates);
+    heapsort_algorithm(vectorWithData, compare_dates);
 
-    std::clock_t end = clock();
-    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+    double elapsed_secs = double(clock() - begin) / CLOCKS_PER_SEC;
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
+    perfomance.time = elapsed_secs;
+
+    return perfomance;
 }

@@ -1,8 +1,10 @@
 #ifndef HEAPSORT_H_INCLUDED
 #define HEAPSORT_H_INCLUDED
 
-void heapsort(std::vector<double>);
-void heapsort(std::vector<date>);
+#include "declaration.h"
+
+algorithmPerformance heapsort(std::vector<double>);
+algorithmPerformance heapsort(std::vector<date>);
 
 template <typename T>
 void sift(std::vector<T>& vector,

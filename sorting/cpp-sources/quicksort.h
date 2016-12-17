@@ -41,23 +41,4 @@ void quicksort_algorithm(std::vector<T> &vector,
     }
 }
 
-/*template <typename T>
-void quicksort(std::vector<T> &vector) {
-    print_vector(vector, 10);
-    std::clock_t begin = std::clock();
-
-    if (std::is_same<T, date>::value) {
-        quicksort_algorithm(vector, 0, vector.size() - 1, compare_dates);
-    }else {
-        quicksort_algorithm(vector, 0, vector.size() - 1, cmp);
-    }
-
-    std::clock_t end = clock();
-    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-
-    print_vector(vector, 10);
-
-    std::cout << elapsed_secs;
-}*/
-
 #endif // QUICKSORT_H_INCLUDED
