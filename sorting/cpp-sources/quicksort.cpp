@@ -5,20 +5,30 @@
 #include "declaration.h"
 #include "quicksort.h"
 
-void quicksort(std::vector<date> array) {
+algorithmPerformance quicksort(std::vector<date> vectorWithData) {
+    algorithmPerformance perfomance;
+
     std::clock_t begin = std::clock();
-    quicksort_algorithm(array, 0, array.size() - 1, compare_dates);
+    quicksort_algorithm(vectorWithData, 0, vectorWithData.size() - 1, compare_dates, perfomance);
     std::clock_t end = clock();
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-    //print_vector(array, 10);
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
+    perfomance.time = elapsed_secs;
+
+    return perfomance;
 }
 
-void quicksort(std::vector<double> array) {
+algorithmPerformance quicksort(std::vector<double> vectorWithData) {
+    algorithmPerformance perfomance;
+
     std::clock_t begin = std::clock();
-    quicksort_algorithm(array, 0, array.size() - 1, cmp);
+    quicksort_algorithm(vectorWithData, 0, vectorWithData.size() - 1, cmp, perfomance);
     std::clock_t end = clock();
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-    //print_vector(array, 10);
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
+    perfomance.time = elapsed_secs;
+
+    return perfomance;
 }

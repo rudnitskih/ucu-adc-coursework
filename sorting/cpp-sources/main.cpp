@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "declaration.h"
 #include "quicksort.h"
@@ -9,7 +10,28 @@
 #define QUICKSORT             4  // 2^2, bit 2
 #define HEAPSORT              8  // 2^3, bit 3
 
-void runSortProcess(unsigned char flags, unsigned int n = 10) {
+void addPerfomanceValues(algorithmPerformance &perfomance, algorithmPerformance &currentPerfomance) {
+    perfomance.cmp += currentPerfomance.cmp;
+    perfomance.mov += currentPerfomance.mov;
+    perfomance.ovh += currentPerfomance.ovh;
+    perfomance.time += currentPerfomance.time;
+}
+
+void initPerfomanceValues(algorithmPerformance &perfomance) {
+    perfomance.cmp = 0;
+    perfomance.mov = 0;
+    perfomance.ovh = 0;
+    perfomance.time = 0;
+}
+
+void calculateAvaragePerfomance(algorithmPerformance &perfomance, int valuesLength) {
+    perfomance.cmp /= valuesLength;
+    perfomance.mov /= valuesLength;
+    perfomance.ovh /= valuesLength;
+    perfomance.time /= valuesLength;
+}
+
+void choseSortProcesses(unsigned char flags, unsigned int n = 10) {
     std::vector<double> reals;
     std::vector<date> dates;
 
@@ -23,25 +45,21 @@ void runSortProcess(unsigned char flags, unsigned int n = 10) {
 
     if ((flags & QUICKSORT) == QUICKSORT) {
         if ((flags & REALS) == REALS) {
-             showSortTitle("QUICKSORT", reals);
-             quicksort(reals);
+             runSortProcess(reals, "quicksort");
         }
 
         if ((flags & DATES) == DATES) {
-             showSortTitle("QUICKSORT", dates);
-             quicksort(dates);
+             runSortProcess(dates, "quicksort");
         }
     }
 
     if ((flags & HEAPSORT) == HEAPSORT) {
         if ((flags & REALS) == REALS) {
-            showSortTitle("HEAPSORT", reals);
-            heapsort(reals);
+            runSortProcess(reals, "heapsort");
         }
 
         if ((flags & DATES) == DATES) {
-            showSortTitle("HEAPSORT", dates);
-            heapsort(dates);
+            runSortProcess(dates, "heapsort");
         }
     }
 }
@@ -99,6 +117,10 @@ int main() {
     int mode;
     unsigned char flags;
 
+    std::ofstream ofs;
+    system("pwd");
+    system("exec rm -r ../results/*");
+
     std::cout << "Choose data:\n 1 - Reals \n 2 - Dates \n 3 - Both \n";
     std::cin >> dataType;
 
@@ -111,15 +133,14 @@ int main() {
     flags = getFlags(dataType, algorithm);
 
     if (mode == 1) {
-        runSortProcess(flags);
+        choseSortProcesses(flags);
     } else {
-        std::vector<unsigned int> sizes = getSortVectorsSizes(1000000, 2000000, 2);
+        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 2);
 
         for(std::vector<unsigned int>::iterator it = sizes.begin();
             it != sizes.end();
             ++it) {
-            runSortProcess(flags, *it);
-            /* std::cout << *it; ... */
+            choseSortProcesses(flags, *it);
         }
     }
 
