@@ -135,7 +135,7 @@ int main() {
     if (mode == 1) {
         choseSortProcesses(flags);
     } else {
-        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 2);
+        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 20);
 
         for(std::vector<unsigned int>::iterator it = sizes.begin();
             it != sizes.end();
