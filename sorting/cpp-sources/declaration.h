@@ -11,11 +11,11 @@ struct date {
 };
 
 struct algorithmPerformance {
-    unsigned int records;
+    unsigned int records = 0;
     unsigned int cmp = 0;
     unsigned int mov = 0;
     unsigned int ovh = 0;
-    double time;
+    double time = 0;
 };
 
 void generator(long, std::vector<double>&);
