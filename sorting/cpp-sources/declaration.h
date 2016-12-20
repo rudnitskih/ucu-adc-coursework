@@ -45,8 +45,7 @@ void swap(std::vector<T>& vector, int i, int j) {
     if(i == j)
         return;
 
-    T temp;
-    temp = vector[i];
+    T temp = vector[i];
     vector[i] = vector[j];
     vector[j] = temp;
 }
@@ -58,6 +57,7 @@ void showSortTitle(std::string algorithmName, std::vector<T>& vector) {
 }
 
 #include "heapsort.h"
+#include "quicksort.h"
 
 template <typename T>
 void runSortProcess(std::vector<T> &vectorOfValues, std::string algorithmName) {
@@ -71,12 +71,15 @@ void runSortProcess(std::vector<T> &vectorOfValues, std::string algorithmName) {
     showSortTitle(algorithmName, vectorOfValues);
 
     for (int i = 0; i < countOfIteration; i++ ) {
-        if ("heapsort") {
-            algorithmPerformance currentPrfomance = heapsort(vectorOfValues);
-            addPerfomanceValues(perfomance, currentPrfomance);
-        } else {
+        algorithmPerformance currentPerfomance;
 
+        if (algorithmName == "heapsort") {
+            currentPerfomance = heapsort(vectorOfValues);
+        } else {
+            currentPerfomance = quicksort(vectorOfValues);
         }
+
+        addPerfomanceValues(perfomance, currentPerfomance);
 
     }
 

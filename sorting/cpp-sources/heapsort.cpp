@@ -8,11 +8,9 @@
 algorithmPerformance heapsort(std::vector<double> vectorWithData) {
     algorithmPerformance perfomance;
 
-    perfomance.records = vectorWithData.size();
-
     std::clock_t begin = std::clock();
 
-    heapsort_algorithm(vectorWithData, cmp);
+    heapsort_algorithm(vectorWithData, cmp, perfomance);
 
     double elapsed_secs = double(clock() - begin) / CLOCKS_PER_SEC;
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
@@ -27,11 +25,9 @@ algorithmPerformance heapsort(std::vector<double> vectorWithData) {
 algorithmPerformance heapsort(std::vector<date> vectorWithData) {
     algorithmPerformance perfomance;
 
-    perfomance.records = vectorWithData.size();
-
     std::clock_t begin = std::clock();
 
-    heapsort_algorithm(vectorWithData, compare_dates);
+    heapsort_algorithm(vectorWithData, compare_dates, perfomance);
 
     double elapsed_secs = double(clock() - begin) / CLOCKS_PER_SEC;
     std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;

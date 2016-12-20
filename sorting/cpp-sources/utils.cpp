@@ -20,7 +20,17 @@ int compare_dates(date a, date b) {
 void saveToFile(algorithmPerformance resultsOfPerfomance, std::string name, std::string typeOfData) {
     std::ofstream fileWithResults;
 
-    fileWithResults.open("../results/" + name + ".csv", std::ofstream::out | std::ofstream::app);
-    fileWithResults << resultsOfPerfomance.records << "; " << resultsOfPerfomance.time << "\n";
+    fileWithResults.open("../results/" + name + "_" + typeOfData + ".csv", std::ofstream::out | std::ofstream::app);
+    fileWithResults
+        << resultsOfPerfomance.records
+        << "; "
+        << resultsOfPerfomance.time
+        << "; "
+        << resultsOfPerfomance.cmp
+        << "; "
+        << resultsOfPerfomance.mov
+        << "; "
+        << resultsOfPerfomance.ovh
+        << "\n";
     fileWithResults.close();
 }

@@ -45,13 +45,11 @@ void choseSortProcesses(unsigned char flags, unsigned int n = 10) {
 
     if ((flags & QUICKSORT) == QUICKSORT) {
         if ((flags & REALS) == REALS) {
-             showSortTitle("QUICKSORT", reals);
-             quicksort(reals);
+             runSortProcess(reals, "quicksort");
         }
 
         if ((flags & DATES) == DATES) {
-             showSortTitle("QUICKSORT", dates);
-             quicksort(dates);
+             runSortProcess(dates, "quicksort");
         }
     }
 
@@ -61,8 +59,7 @@ void choseSortProcesses(unsigned char flags, unsigned int n = 10) {
         }
 
         if ((flags & DATES) == DATES) {
-            showSortTitle("HEAPSORT", dates);
-            heapsort(dates);
+            runSortProcess(dates, "heapsort");
         }
     }
 }
@@ -121,11 +118,8 @@ int main() {
     unsigned char flags;
 
     std::ofstream ofs;
-    remove("../results/heapsort.csv");
-    //ofs.close();
-
-    remove("../results/quicksort.csv");
-    //ofs.close();
+    system("pwd");
+    system("exec rm -r ../results/*");
 
     std::cout << "Choose data:\n 1 - Reals \n 2 - Dates \n 3 - Both \n";
     std::cin >> dataType;
@@ -141,7 +135,7 @@ int main() {
     if (mode == 1) {
         choseSortProcesses(flags);
     } else {
-        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 20);
+        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 2);
 
         for(std::vector<unsigned int>::iterator it = sizes.begin();
             it != sizes.end();
