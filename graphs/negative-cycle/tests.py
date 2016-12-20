@@ -1,7 +1,7 @@
 import utils as u
 
 # generate graph
-vertices, edges = u.generate_test_graph(100, 0.7)
+vertices, edges = u.generate_test_graph(100, 0.7, -10, 10)
 
 # generate negative cycle
 cycle = u.add_negative_cycle(vertices, edges)

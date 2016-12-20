@@ -1,13 +1,13 @@
 from random import uniform, randint
 
 
-def generate_test_graph(n, connectivity):
+def generate_test_graph(n, connectivity, min_weight, max_weight):
     edges = {}
     vertices = range(n)
     for v1 in range(n):
         for v2 in range(v1, n):
             if uniform(0, 1) <= connectivity:
-                weight = uniform(-10, 10)
+                weight = uniform(min_weight, max_weight)
                 key = gr_key(v1, v2);
                 edges[key] = (v1, v2, weight)
     return vertices, edges
@@ -45,28 +45,33 @@ def add_negative_cycle(vertices, edges):
 
 
 def save_graph_to_file(vertices, edges, file_name):
-    f = open(file_name, "w")
-    n = len(vertices)
-    f.write(str(n) + "\n")
+    with open(file_name, "w") as f:
+        n = len(vertices)
+        f.write(str(n) + "\n")
+        for v in vertices:
+            f.write(str(v) + "\n")
 
-    for key, v in edges.items():
-        f.write("%d %d %f\n" % (v[0], v[1], v[2]))
-    f.close()
+        for key, v in edges.items():
+            f.write("%d %d %f\n" % (v[0], v[1], v[2]))
 
 
 def read_graph_from_file(file_name):
-    f = open(file_name, "r")
-    n = int(f.readline());
-    vertices = range(n)
-    edges = {}
-    for line in f:
-        v = line.split(" ")
-        v1 = int(v[0])
-        v2 = int(v[1])
-        weight = float(v[2])
-        edges[gr_key(v[0], v[1])] = (v1,v2,weight)
-    return vertices, edges
+    with open(file_name, "r") as f:
+        n = int(f.readline());
+        vertices = []
+        for i in range(n):
+            vertices.append(f.readline())
+
+        edges = {}
+        for line in f:
+            v = line.split(" ")
+            v1 = int(v[0])
+            v2 = int(v[1])
+            weight = float(v[2])
+            edges[gr_key(v[0], v[1])] = (v1,v2,weight)
+        return vertices, edges
 
 
 def gr_key(v1, v2):
     return str(v1) + "_" + str(v2)
+
