@@ -85,3 +85,9 @@ def read_graph_from_file(file_name):
                 weight = float(pair[1])
                 adj_list[v1][v2]=weight
         return vertices, adj_list
+
+
+def to_edges(adj_dictionary):
+    for v1 in adj_dictionary.keys():
+        for v2 in adj_dictionary[v1].keys():
+            yield (v1, v2, adj_dictionary[v1][v2])
