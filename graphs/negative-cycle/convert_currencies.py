@@ -5,7 +5,7 @@ def convert_currencies_to_graph(file_path):
     with open(file_path, "r") as f:
         n = int(f.readline());
         vertices = []
-        edges = {}
+        adj_list = {}
         for line in f:
             parts = filter(None, line.split(' '))
             if len(parts) == 6:
