@@ -1,4 +1,4 @@
-## Intro
+# Sorting
 In our variant we need to compare two algorithms - Heapsort and Quicksort for different input types - reals and dates.
 
 ## Algorithms overivew
@@ -51,12 +51,12 @@ The heapsort algorithm involves preparing the list by first turning it into a ma
 
 The steps are:
 
-1. Call the buildMaxHeap() function on the list. Also referred to as heapify(), this builds a heap from a list in O(n) operations.
+1. Call the `makeInitialHeap()` function on the list. Also referred to as `heapify()`, this builds a heap from a list in `O(n)` operations.
 2. Swap the first element of the list with the final element. Decrease the considered range of the list by one.
-3. Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
+3. Call the `sift()` function on the list to sift the new first element to its appropriate index in the heap.
 4. Go to step (2) unless the considered range of the list is one element.
 
-The buildMaxHeap() operation is run once, and is O(n) in performance. The siftDown() function is O(log(n)), and is called n times. Therefore, the performance of this algorithm is O(n + n * log(n)) which evaluates to O(n log n).
+The `buildMaxHeap()` operation is run once, and is `O(n)` in performance. The `sift()` function is `O(log(n))`, and is called `n` times. Therefore, the performance of this algorithm is `O(n+n*log(n))` which evaluates to `O(nlog(n))`.
 
 
 
@@ -64,15 +64,18 @@ The buildMaxHeap() operation is run once, and is O(n) in performance. The siftDo
 
 |                        | Quicksort   | Heapsort    |
 | ---------------------- | ----------- | ----------- |
-| Worst-case performance |    O(n2)    | O(n log(n)) |
-| Average performance    | O(n log(n)) | O(n log(n)) |
-| Best-case performance  | O(n log(n)) | O(n log(n)) |
+| Worst-case performance |    O(n^2)   | O(nlog(n))  |
+| Average performance    | O(nlog(n))  | O(nlog(n))  |
+| Best-case performance  | O(nlog(n))  | O(nlog(n))  |
 
+## Implementation
+
+For comparing these algorithms was chosen C++ language, because other high-level programming languages, e.g. Java, Javascript, C# are doing a lot of optimization internally. C++ is a compromise between low-level C and other mentioned tools.
 
 ## Conlusions
 
 // TODO temp part
-Thus, when an occasional "blowout" to O(n2) is tolerable, we can expect that, on average, quick sort will provide considerably better performance - especially if one of the modified pivot choice procedures is used.
+Thus, when an occasional "blowout" to `O(n^2) is tolerable, we can expect that, on average, quick sort will provide considerably better performance - especially if one of the modified pivot choice procedures is used.
 
 Most commercial applications would use quicksort for its better average performance: they can tolerate an occasional long run (which just means that a report takes slightly longer to produce on full moon days in leap years) in return for shorter runs most of the time.
 
