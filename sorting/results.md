@@ -58,8 +58,6 @@ The steps are:
 
 The `buildMaxHeap()` operation is run once, and is `O(n)` in performance. The `sift()` function is `O(log(n))`, and is called `n` times. Therefore, the performance of this algorithm is `O(n+n*log(n))` which evaluates to `O(nlog(n))`.
 
-
-
 ## Theoretical performance comparation
 
 |                        | Quicksort   | Heapsort    |
@@ -70,7 +68,21 @@ The `buildMaxHeap()` operation is run once, and is `O(n)` in performance. The `s
 
 ## Implementation
 
-For comparing these algorithms was chosen C++ language, because other high-level programming languages, e.g. Java, Javascript, C# are doing a lot of optimization internally. C++ is a compromise between low-level C and other mentioned tools.
+For comparing these algorithms was chosen C++ language, because other high-level programming languages, e.g. Java, Javascript, C# are doing a lot of optimization internally. C++ is a compromise between low-level C and other mentioned languages. We want to mention that nobody in the team had experience working with C++. Hence, some code can be written not in "best-practices" of the language.
+
+Source code can be find in [cpp-sources](https://github.com/rudnitskih/ucu-adc-coursework/tree/master/sorting/cpp-sources) folder. Code was writed in [Code Blocks](http://www.codeblocks.org/) IDE and compiled by [GCC](http://gcc.gnu.org/). Additionaly need to enable [C++11](http://stackoverflow.com/a/24398366) mode in Code Blocks.
+
+The program to compare algorithms is a console application.
+
+![Application screenshot](./results/application_screenshot.png "Application screenshot")
+
+The code can be divided into the following parts:
+
+- **generator**, for generating test values;
+- **heapsort**, implementation heapsort algorithm;
+- **quicksort**, implementation quicksort algorithm;
+- **utils**, helper functions, e.g. `saveToFile()`, `compareDates()`;
+- **main**, for managing flow of operations
 
 ## Conlusions
 
@@ -79,7 +91,7 @@ Thus, when an occasional "blowout" to `O(n^2) is tolerable, we can expect that, 
 
 Most commercial applications would use quicksort for its better average performance: they can tolerate an occasional long run (which just means that a report takes slightly longer to produce on full moon days in leap years) in return for shorter runs most of the time.
 
-However, quick sort should never be used in applications which require a guarantee of response time, unless it is treated as an O(n2) algorithm in calculating the worst-case response time. If you have to assume O(n2) time, then - if n is small, you're better off using insertion sort - which has simpler code and therefore smaller constant factors.
+However, quick sort should never be used in applications which require a guarantee of response time, unless it is treated as an O(n2) algorithm in calculating the worst-case response time. If you have to assume `O(n^2)` time, then - if n is small, you're better off using insertion sort - which has simpler code and therefore smaller constant factors.
 
 And if n is large, you should obviously be using heap sort, for its guaranteed O(nlog n) time. Life-critical (medical monitoring, life support in aircraft and space craft) and mission-critical (monitoring and control in industrial and research plants handling dangerous materials, control for aircraft, defence, etc) software will generally have a response time as part of the system specifications. In all such systems, it is not acceptable to design based on average performance, you must always allow for the worst case, and thus treat quicksort as O(n2).
 
