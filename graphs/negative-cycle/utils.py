@@ -1,21 +1,25 @@
 from random import uniform, randint
+import time
 
 
 def generate_test_graph(n, connectivity, min_weight, max_weight):
-    vertices = range(n)
+    vertices = {str(x) for x in range(n)}
     adj_list = {}
     for v1 in vertices:
         for v2 in vertices:
-            if uniform(0, 1) <= connectivity:
+            if v1 != v2 and uniform(0, 1) <= connectivity:
                 weight = uniform(min_weight, max_weight)
                 set_connection(adj_list, str(v1), str(v2), weight)
     return vertices, adj_list
 
 
 def set_connection(adj_list, v1, v2, weight):
-    if v1 not in adj_list:
+    try:
+        adj_list[v1][v2] = weight
+    except:
         adj_list[v1] = {}
-    adj_list[v1][v2] = weight
+        adj_list[v1][v2] = weight
+
 
 
 def has_connection(adj_list, v1, v2):
@@ -28,7 +32,7 @@ def add_negative_cycle(vertices, adj_list, min_weight, max_weight):
     n = len(vertices)
 
     # select k random vertices
-    k = randint(0, n / 4)
+    k = randint(2, n / 4)
     cycle = []
     for i in range(k):
         random_vertice = str(randint(0, n))
@@ -87,7 +91,30 @@ def read_graph_from_file(file_name):
         return vertices, adj_list
 
 
-def to_edges(adj_dictionary):
-    for v1 in adj_dictionary.keys():
-        for v2 in adj_dictionary[v1].keys():
-            yield (v1, v2, adj_dictionary[v1][v2])
+def calculate_cycle_sum(cycle, adj_dictionary):
+    s = 0
+    for i in range(len(cycle)):
+        v1 = cycle[i]
+        next_key = i+1;
+        if(next_key == len(cycle)):
+            next_key = 0
+        v2 = cycle[next_key]
+        weight = adj_dictionary[v1][v2]
+        s += weight
+    return s
+
+
+def time_point(start, dict, name):
+    end = time.clock()
+    try:
+        dict[name][0] += end-start
+        dict[name][1] += 1
+    except:
+        dict[name] = (end-start, 1)
+    return end
+
+
+def save_time_stats(file_name, dict):
+    with open(file_name) as f:
+        for point, duration, times in dict.items():
+            f.write("%s: %f, %i"%(point, duration, times))
