@@ -117,6 +117,12 @@ int main() {
     int mode;
     unsigned char flags;
 
+    std::clock_t begin = std::clock();
+    std::clock_t end = clock();
+
+    double elapsed_secs = double(end - begin);
+    std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
     std::ofstream ofs;
     system("exec find ../program-results -type f -name '*.csv' -delete");
 
