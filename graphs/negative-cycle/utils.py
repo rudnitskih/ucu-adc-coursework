@@ -35,9 +35,9 @@ def add_negative_cycle(vertices, adj_list, min_weight, max_weight):
     k = randint(2, n / 4)
     cycle = []
     for i in range(k):
-        random_vertice = str(randint(0, n))
+        random_vertice = str(randint(0, n-1))
         while random_vertice in cycle:
-            random_vertice = str(randint(0, n))
+            random_vertice = str(randint(0, n-1))
 
         cycle.append(random_vertice)
     edges_cycle = []
@@ -105,16 +105,15 @@ def calculate_cycle_sum(cycle, adj_dictionary):
 
 
 def time_point(start, dict, name):
-    end = time.clock()
-    try:
-        dict[name][0] += end-start
-        dict[name][1] += 1
-    except:
+    end = time.time()
+    if name in dict:
+        dict[name] = (dict[name][0] + end-start, dict[name][1] + 1)
+    else:
         dict[name] = (end-start, 1)
     return end
 
 
 def save_time_stats(file_name, dict):
-    with open(file_name) as f:
-        for point, duration, times in dict.items():
-            f.write("%s: %f, %i"%(point, duration, times))
+    with open(file_name, "w") as f:
+        for point, (duration, times) in dict.items():
+            f.write("%s: %.12f, %d, %.12f\n"%(point, duration, times, duration/times))

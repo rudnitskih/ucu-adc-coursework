@@ -7,7 +7,7 @@ def bellman_ford(vertices, adj_dictionary):
     t_points = {}
     n = len(vertices)
     #op[2] += 1
-    s = time.clock()
+    s = time.time()
     distance = dict((v, np.infty) for v in vertices)
     s = u.time_point(s, t_points, "Distance initialization")
     #op[2] += n
@@ -75,7 +75,12 @@ def bellman_ford(vertices, adj_dictionary):
                 s = u.time_point(s, t_points, "For loop iteration start")
                 #op[2] += 1
                 #op[0] += 1
-                if distance[v1] + weight < distance[v2]:
+                distance_v1 = distance[v1]
+                s = u.time_point(s, t_points, "Dictionary value getting")
+                distance_v2 = distance[v2]
+                s = u.time_point(s, t_points, "Dictionary value getting")
+
+                if distance_v1 + weight < distance_v2:
                     s = u.time_point(s, t_points, "Comparsion")
                     #op[2] += 1
                     # negative cycle found
@@ -84,21 +89,25 @@ def bellman_ford(vertices, adj_dictionary):
                     #op[2] += 1
                     current_vertice = v2
                     s = u.time_point(s, t_points, "Variable set")
+                    current_vertice_predecessor = predecessor[current_vertice]
+                    s = u.time_point(s, t_points, "Dictionary value getting")
                     #op[1] += 1
 
                     #op[0] += 1
-                    while predecessor[current_vertice] != v2:
-                        s = u.time_point(s, t_points, "Comparsion")
+                    while current_vertice_predecessor not in cycle:
+                        s = u.time_point(s, t_points, "Search")
                         #op[0] += 1
-                        prev = predecessor[current_vertice]
-                        s = u.time_point(s, t_points, "Dictionary value getting")
-                        #op[1] += 1
-                        cycle.append(prev)
+                        cycle.append(current_vertice_predecessor)
                         s = u.time_point(s, t_points, "List append")
                         #op[2] += 1
-                        current_vertice = prev
+                        current_vertice = current_vertice_predecessor
                         s = u.time_point(s, t_points, "Variable set")
+                        current_vertice_predecessor = predecessor[current_vertice]
+                        s = u.time_point(s, t_points, "Dictionary value getting")
                         #op[1] += 1
+                    current_vertice_predecessor_index = cycle.index(current_vertice_predecessor)
+                    s = u.time_point(s, t_points, "Search")
+                    cycle = cycle[current_vertice_predecessor_index:]
 
                     return cycle, t_points#op
 
