@@ -1,138 +1,111 @@
 import numpy as np
-import time
-import utils as u
 
-def bellman_ford(vertices, adj_dictionary):
-    #op = [0, 0, 0]
-    t_points = {}
-    n = len(vertices)
-    #op[2] += 1
-    s = time.time()
-    distance = dict((v, np.infty) for v in vertices)
-    s = u.time_point(s, t_points, "Distance initialization")
-    #op[2] += n
-    predecessor = dict((v, None) for v in vertices)
-    #op[2] += n
-    s = u.time_point(s, t_points, "Predecessor initialization")
+
+def bellman_ford(n, edges):
+    op = [0, 0, 0]
+
+    distance = np.empty(n)
+    op[2] += 1
+    distance[:] = np.infty
+    op[1] += 1
+    predecessor = np.empty(n, dtype='int')
+    op[2] += 1
+    predecessor[:] = -1
+    op[1] += 1
 
     while True:
-        #op[2] += 1
-        s = u.time_point(s, t_points, "While loop iteration start")
-        n = len(vertices)
-        #op[2] += 1
-
-        # start from first vertice as we don't care about actual path
-        v0 = next(iter(vertices))
-        #op[2] += 2
-        distance[v0] = 0
-        #op[2] += 1
-        s = u.time_point(s, t_points, "Distance start initialization")
+        op[2] += 1
+        # start from random vertice as we don't care about actual path
+        distance[edges[0][0]] = 0
+        op[1] += 1
+        predecessor[edges[0][0]] = edges[0][0]
+        op[1] += 1
 
         for i in range(n):
-            s = u.time_point(s, t_points, "For loop iteration start")
-            #op[2] += 1
+            op[2] += 1
             # introduce counter to stop when no changes done
             changes = 0
-            #op[2] += 1
-            s = u.time_point(s, t_points, "Variable set")
+            op[1] += 1
+            for v1, v2, weight in edges:
+                op[2] += 1
 
-            for v1 in adj_dictionary.keys():
-                s = u.time_point(s, t_points, "For loop iteration start")
-                #op[2] += 1
-                for v2, weight in adj_dictionary[v1].items():
-                    s = u.time_point(s, t_points, "For loop iteration start")
-                    #op[2] += 1
-                    distance_v1 = distance[v1]
-                    s = u.time_point(s, t_points, "Dictionary value getting")
-                    distance_v1_w = distance_v1 + weight
-                    #op[2] += 1
-                    s = u.time_point(s, t_points, "Adding")
+                op[0] += 1
+                if distance[v1] + weight < distance[v2]:
 
-                    #op[0] += 1
-                    if distance_v1_w < distance[v2]:
-                        s = u.time_point(s, t_points, "Comparsion")
-                        distance[v2] = distance_v1_w
-                        s = u.time_point(s, t_points, "Dictionary value setting")
-                        #op[1] += 1
-                        predecessor[v2] = v1
-                        s = u.time_point(s, t_points, "Dictionary value setting")
-                        #op[1] += 1
-                        changes += 1
-                        s = u.time_point(s, t_points, "Adding")
-                        #op[2] += 1
+                    distance[v2] = distance[v1] + weight
+                    op[1] += 1
+                    predecessor[v2] = v1
+                    op[1] += 1
+                    changes += 1
+                    op[1] += 1
+
             # early stop if all distances processed
-            #op[0] += 1
+            op[0] += 1
             if changes == 0:
-                s = u.time_point(s, t_points, "Comparsion")
-                #op[2] += 1
                 break
-        s = u.time_point(s, t_points, "Ending loop")
 
-        for v1 in adj_dictionary.keys():
-            s = u.time_point(s, t_points, "For loop iteration start")
-            #op[2] += 1
-            for v2, weight in adj_dictionary[v1].items():
-                s = u.time_point(s, t_points, "For loop iteration start")
-                #op[2] += 1
-                #op[0] += 1
-                distance_v1 = distance[v1]
-                s = u.time_point(s, t_points, "Dictionary value getting")
-                distance_v2 = distance[v2]
-                s = u.time_point(s, t_points, "Dictionary value getting")
+        for v1, v2, weight in edges:
+            op[2] += 1
 
-                if distance_v1 + weight < distance_v2:
-                    s = u.time_point(s, t_points, "Comparsion")
-                    #op[2] += 1
-                    # negative cycle found
-                    cycle = []
-                    s = u.time_point(s, t_points, "Variable set")
-                    #op[2] += 1
-                    current_vertice = v2
-                    s = u.time_point(s, t_points, "Variable set")
+            op[0] += 1
+            if distance[v1] + weight < distance[v2]:
+
+                # negative cycle found
+                current_vertice = v2
+                op[1] += 1
+                current_vertice_predecessor = predecessor[current_vertice]
+                op[1] += 1
+                cycle = [current_vertice]
+                op[1] += 1
+
+                while current_vertice_predecessor not in cycle:
+                    op[2] += 1
+                    cycle.append(current_vertice_predecessor)
+                    op[2] += 1
+                    current_vertice = current_vertice_predecessor
+                    op[1] += 1
                     current_vertice_predecessor = predecessor[current_vertice]
-                    s = u.time_point(s, t_points, "Dictionary value getting")
-                    #op[1] += 1
+                    op[2] += 1
 
-                    #op[0] += 1
-                    while current_vertice_predecessor not in cycle:
-                        s = u.time_point(s, t_points, "Search")
-                        #op[0] += 1
-                        cycle.append(current_vertice_predecessor)
-                        s = u.time_point(s, t_points, "List append")
-                        #op[2] += 1
-                        current_vertice = current_vertice_predecessor
-                        s = u.time_point(s, t_points, "Variable set")
-                        current_vertice_predecessor = predecessor[current_vertice]
-                        s = u.time_point(s, t_points, "Dictionary value getting")
-                        #op[1] += 1
-                    current_vertice_predecessor_index = cycle.index(current_vertice_predecessor)
-                    s = u.time_point(s, t_points, "Search")
-                    cycle = cycle[current_vertice_predecessor_index:]
+                current_vertice_predecessor_index = cycle.index(current_vertice_predecessor)
+                op[2] += 1
+                cycle = cycle[current_vertice_predecessor_index:]
+                op[2] += 1
+                cycle[::-1]
+                op[2] += 1
 
-                    return cycle, t_points#op
+                return cycle, op
 
-        # when no cycles found, check if there any vertices with distance infinity
-        vertices = {k for k, v in distance.items() if v == np.infty}
-        s = u.time_point(s, t_points, "Vertices filtering")
-        #op[0] += n
-        #op[2] += n
+        # when no cycles found, check if there any vertices with distance infinity (invisible from starting point)
+        edges2 = []
+        op[1] += 1
+        for edge in edges:
+            op[2] += 1
 
-        #op[0] += 1
-        if len(vertices) == 0:
-            s = u.time_point(s, t_points, "Comparsion")
-            #op[2] += 1
-            # if no, stop cycle
+            op[0] += 1
+            if distance[edge[0]] == np.infty:
+                edges2.append(edge)
+                op[2] += 1
+
+        edges = edges2
+        op[2] += 1
+
+        op[0] += 1
+        # if no invisible vertices
+        if len(edges) == 0:
             break
+        # if yes run again
+        n = 0
+        op[1] += 1
+        for d in distance:
+            op[2] += 1
 
-        # if yes, then run algorithm on that vertices
-        adj_len = len(adj_dictionary)
-        #op[2] += 1
-        adj_dictionary = {k: v for k, v in adj_dictionary.items() if k in vertices}
-        s = u.time_point(s, t_points, "Adj filtering")
-        #op[0] += adj_len
-        #op[2] += adj_len
+            op[0] += 1
+            if d == np.infty:
+                n += 1
+                op[2] += 1
 
-    return None, t_points#op
+    return None, op
 
 
 def floyd_warshall(vertices, adj_dictionary):
