@@ -1,4 +1,4 @@
-## Intro
+# Sorting
 In our variant we need to compare two algorithms - Heapsort and Quicksort for different input types - reals and dates.
 
 ## Algorithms overivew
@@ -51,36 +51,145 @@ The heapsort algorithm involves preparing the list by first turning it into a ma
 
 The steps are:
 
-1. Call the buildMaxHeap() function on the list. Also referred to as heapify(), this builds a heap from a list in O(n) operations.
+1. Call the `makeInitialHeap()` function on the list. Also referred to as `heapify()`, this builds a heap from a list in `O(n)` operations.
 2. Swap the first element of the list with the final element. Decrease the considered range of the list by one.
-3. Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
+3. Call the `sift()` function on the list to sift the new first element to its appropriate index in the heap.
 4. Go to step (2) unless the considered range of the list is one element.
 
-The buildMaxHeap() operation is run once, and is O(n) in performance. The siftDown() function is O(log(n)), and is called n times. Therefore, the performance of this algorithm is O(n + n * log(n)) which evaluates to O(n log n).
-
-
+The `buildMaxHeap()` operation is run once, and is `O(n)` in performance. The `sift()` function is `O(log(n))`, and is called `n` times. Therefore, the performance of this algorithm is `O(n+n*log(n))` which evaluates to `O(nlog(n))`.
 
 ## Theoretical performance comparation
 
 |                        | Quicksort   | Heapsort    |
 | ---------------------- | ----------- | ----------- |
-| Worst-case performance |    O(n2)    | O(n log(n)) |
-| Average performance    | O(n log(n)) | O(n log(n)) |
-| Best-case performance  | O(n log(n)) | O(n log(n)) |
+| Worst-case performance |    O(n^2)   | O(nlog(n))  |
+| Average performance    | O(nlog(n))  | O(nlog(n))  |
+| Best-case performance  | O(nlog(n))  | O(nlog(n))  |
 
+## Implementation
+
+For comparing these algorithms was chosen C++ language, because other high-level programming languages, e.g. Java, Javascript, C# are doing a lot of optimization internally. C++ is a compromise between low-level C and other mentioned` languages. We want to mention that nobody in the team had experience working with C++. Hence, some code can be written not in "best-practices" of the language.
+
+Source code can be find in [cpp-sources](https://github.com/rudnitskih/ucu-adc-coursework/tree/master/sorting/cpp-sources) folder. Code was writed in [Code Blocks](http://www.codeblocks.org/) IDE and compiled by [GCC](http://gcc.gnu.org/). Additionaly need to enable [C++11](http://stackoverflow.com/a/24398366) mode in Code Blocks.
+
+The program to compare algorithms is a console application.
+
+![Application screenshot](./results/application_screenshot.png "Application screenshot")
+
+### Technical details of implementation
+
+The code can be divided into the following parts:
+
+- **generator**, for generating test values;
+- **heapsort**, implementation heapsort algorithm;
+- **quicksort**, implementation quicksort algorithm;
+- **utils**, helper functions, e.g. `saveToFile()`, `compareDates()`;
+- **main**, for managing flow of operations.
+
+For storing real values we use `double` datatype, for storing Date we use the following custom data structure:
+```cpp
+	struct date {
+	    int day;
+	    int month;
+	    int year;
+	};
+
+```
+
+For generating random values we use the following ways.
+
+Random real:
+```cpp
+double r = ((double)rand() / (double)(RAND_MAX)); // values in range (0, 1)
+```
+
+Random date:
+```cpp
+date date;
+date.year = rand() % 20 + 1996;
+date.month = rand() % 12 + 1;
+date.day = rand() % 28 + 1;
+```
+
+Before both generation, we need to add a 'seed' to C++ generator: `srand((unsigned)time(NULL));`
+
+For storing, array of data we used *[vector](http://www.cplusplus.com/reference/vector/vector/data/)* data type becuase is good solution to store array with dynamic length.
+Source codes of algorithms you can check in [heapsort](//github.com/rudnitskih/ucu-adc-coursework/blob/master/sorting/cpp-sources/heapsort.h) and [quicksort](//github.com/rudnitskih/ucu-adc-coursework/blob/master/sorting/cpp-sources/quicksort.h) files.
+
+To calculate correct time of algorithm execution we run the same algorithms with the same parameters ten times and estimated average duration.
+```cpp
+	
+int countOfIteration = 10;
+
+for (int i = 0; i < countOfIteration; i++ ) {
+    algorithmPerformance currentPerfomance;
+
+    if (algorithmName == "heapsort") {
+        currentPerfomance = heapsort(vectorOfValues);
+    } else {
+        currentPerfomance = quicksort(vectorOfValues);
+    }
+
+    addPerfomanceValues(perfomance, currentPerfomance);
+
+}
+
+calculateAvaragePerfomance(perfomance, countOfIteration);
+```
+
+Results prepared on the machine with following characteristics:
+
+- Laptop Dell Inspiron 3520
+- OS Ubuntu 14.04 64-bit
+- Processor Intel® Core™ i5-3210M CPU @ 2.50GHz × 4 
+- SSD disk 128GB
+- 8 Gb RAM
+
+To minimize an influence of environment, we have run compiled program after reboot and have not started other processes. For calculating time was used [clock()](http://www.cplusplus.com/reference/ctime/clock/) utility which return count of *clouck ticks*, which are units of time of a constant but system-specific length (with a relation of CLOCKS_PER_SEC clock ticks per second).
+On machine with characteristics above CLOCKS_PER_SEC is equal to 1000000, so a precision of measured time is 0.00001 which enough for our experiment.
+
+## Results
+
+All raw results wich generated by application cna be found in [results](https://github.com/rudnitskih/ucu-adc-coursework/tree/master/sorting/results) folder in .csv files. We used the free LibreOffice to prepare final charts.
+
+There are final tables for each algorithm:
+
+![Heapsort results](./results/table_heapsort.png "Heapsort results")
+![Quicksort results](./results/table_quicksort.png "Quicksort results")
+
+As we can see "Scale factors" are located in the same small range, which mean algorithms were implemented correctly. It can also be seen in the corresponding graphs (average values were built by multiplying "Average Case Estimation" values on average scale factor).
+
+For Heapsort algorithm:
+![Average estimations for Heapsort](./results/average_estimation(heapsort).png "Average estimations for heapsort")
+
+For Quicksort algorithm:
+![Average estimations for Quicksort](./results/average_estimation(quicksort).png "Average estimations for Quicksort")
+
+To answer the question "Which algorithm faster Heapsort vs Quicksort?", we built charts for both data types:
+
+![Dates results](./results/dates_time_sorting.png "Dates results")
+![Reals results](./results/reals_time_sorting.png "Reals results")
+
+In both cases, Quicksort beats Heapsort almost in two times. Why?
+
+Heapsort is `O(nlog(n))` guaranted, what is much better than worst case in Quicksort. The secret of Quicksort is: It almost does not do unnecessary element swaps. Swap is time consuming.
+With Heapsort, even if all of your data is already ordered, you are going to swap 100% of elements to order the array. With Quicksort you do not swap what is already ordered. If your data is completely ordered, you swap almost nothing! Although there is a lot of fussing about worst case, a little improvement on the choice of pivot, any other than getting the first or last element of array, can avoid it. If you get a pivot from the intermediate element between first, last and middle element, it is suficient to avoid worst case.
+
+What is superior in Quicksort is not the worst case, but the best case! In best case you do the same number of comparisons, ok, but you swap almost nothing. In average case you swap part of the elements, but not all elements, as in Heapsort. That is what gives Quicksort the best time. Less swap, more speed.
+
+Hense, it is the reason why many languages have default sort algorithm as Quicksort. 
 
 ## Conlusions
 
-// TODO temp part
-Thus, when an occasional "blowout" to O(n2) is tolerable, we can expect that, on average, quick sort will provide considerably better performance - especially if one of the modified pivot choice procedures is used.
+In this part, we compared two algorithms Heap Sort and Quicksort. Theoretical descriptions give us a possibility to understand general details and complexity of algorithms.
 
-Most commercial applications would use quicksort for its better average performance: they can tolerate an occasional long run (which just means that a report takes slightly longer to produce on full moon days in leap years) in return for shorter runs most of the time.
+Heapsort looked better than Quicksort because its Average, Worst- and Best-case performance the same - `O(nlog(n))`, and for Quicksort worst-case is `O(n^2)`. To compare them we have written C++ implementation for both algorithms and run on different types and amount of data.  
 
-However, quick sort should never be used in applications which require a guarantee of response time, unless it is treated as an O(n2) algorithm in calculating the worst-case response time. If you have to assume O(n2) time, then - if n is small, you're better off using insertion sort - which has simpler code and therefore smaller constant factors.
+Final results changed our assumptions in start - Quicksort better than Heapsort, because it requires fewer exchange operations.
 
-And if n is large, you should obviously be using heap sort, for its guaranteed O(nlog n) time. Life-critical (medical monitoring, life support in aircraft and space craft) and mission-critical (monitoring and control in industrial and research plants handling dangerous materials, control for aircraft, defence, etc) software will generally have a response time as part of the system specifications. In all such systems, it is not acceptable to design based on average performance, you must always allow for the worst case, and thus treat quicksort as O(n2).
 
 ## Credits
+
 - https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort
 - https://en.wikipedia.org/wiki/Quicksort
 - https://en.wikipedia.org/wiki/Heapsort
@@ -88,3 +197,4 @@ And if n is large, you should obviously be using heap sort, for its guaranteed O
 - https://www.cs.auckland.ac.nz/~jmor159/PLDS210/qsort3.html
 - http://stackoverflow.com/questions/18591924/how-to-use-bitmask
 - https://www.cs.auckland.ac.nz/~jmor159/PLDS210/qsort3.html
+- Presentations of course "Algorithms and Data Structure" by Vadim Ermolayev (Block I Topic 3: Algorithm (Performance) Analysis: a Bit of Statistics and Experiments, Block III Topic 2: The Most Efficient Internal Sorting Algorithms) 
