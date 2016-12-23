@@ -165,16 +165,28 @@ For Heapsort algorithm:
 For Quicksort algorithm:
 ![Average estimations for Quicksort](./results/average_estimation(quicksort).png "Average estimations for Quicksort")
 
+To answer the question "Which algorithm faster Heapsort vs Quicksort?", we built charts for both data types:
+
+![Dates results](./results/dates_time_sorting.png "Dates results")
+![Reals results](./results/reals_time_sorting.png "Reals results")
+
+In both cases, Quicksort beats Heapsort almost in two times. Why?
+
+Heapsort is `O(nlog(n))` guaranted, what is much better than worst case in Quicksort. The secret of Quicksort is: It almost does not do unnecessary element swaps. Swap is time consuming.
+With Heapsort, even if all of your data is already ordered, you are going to swap 100% of elements to order the array. With Quicksort you do not swap what is already ordered. If your data is completely ordered, you swap almost nothing! Although there is a lot of fussing about worst case, a little improvement on the choice of pivot, any other than getting the first or last element of array, can avoid it. If you get a pivot from the intermediate element between first, last and middle element, it is suficient to avoid worst case.
+
+What is superior in Quicksort is not the worst case, but the best case! In best case you do the same number of comparisons, ok, but you swap almost nothing. In average case you swap part of the elements, but not all elements, as in Heapsort. That is what gives Quicksort the best time. Less swap, more speed.
+
+Hense, it is the reason why many languages have default sort algorithm as Quicksort. 
+
 ## Conlusions
 
-// TODO temp part
-Thus, when an occasional "blowout" to `O(n^2) is tolerable, we can expect that, on average, quick sort will provide considerably better performance - especially if one of the modified pivot choice procedures is used.
+In this part, we compared two algorithms Heap Sort and Quicksort. Theoretical descriptions give us a possibility to understand general details and complexity of algorithms.
 
-Most commercial applications would use quicksort for its better average performance: they can tolerate an occasional long run (which just means that a report takes slightly longer to produce on full moon days in leap years) in return for shorter runs most of the time.
+Heapsort looked better than Quicksort because its Average, Worst- and Best-case performance the same - `O(nlog(n))`, and for Quicksort worst-case is `O(n^2)`. To compare them we have written C++ implementation for both algorithms and run on different types and amount of data.  
 
-However, quick sort should never be used in applications which require a guarantee of response time, unless it is treated as an `O(n^2)` algorithm in calculating the worst-case response time. If you have to assume `O(n^2)` time, then - if n is small, you're better off using insertion sort - which has simpler code and therefore smaller constant factors.
+Final results changed our assumptions in start - Quicksort better than Heapsort, because it requires fewer exchange operations.
 
-And if n is large, you should obviously be using heap sort, for its guaranteed O(nlog n) time. Life-critical (medical monitoring, life support in aircraft and space craft) and mission-critical (monitoring and control in industrial and research plants handling dangerous materials, control for aircraft, defence, etc) software will generally have a response time as part of the system specifications. In all such systems, it is not acceptable to design based on average performance, you must always allow for the worst case, and thus treat quicksort as O(n2).
 
 ## Credits
 
