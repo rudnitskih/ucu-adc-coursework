@@ -12,6 +12,7 @@ This algorithm uses similar principle of vertex relaxation, in which approximati
 This algorithms uses at most `O(|V|*|E|)` operations in the main loop for the worst case. In the best case, if all egdes are sorted in order of distance from source vertex, it will use `O(|E|)` operations.
 For example, consider graph with 4 edges and 5 vertices `(d,e, 1),(c,d, 3),(b,c, 2),(a,b,3)` with source vertex `a`.
 Distance:
+
 | a | b   | c   | d   | e   |
 |---|-----|-----|-----|-----|
 | 0 | inf | inf | inf | inf |
@@ -19,7 +20,9 @@ Distance:
 | 0 | 3   | 5   | inf | inf |
 | 0 | 3   | 5   | 8   | inf |
 | 0 | 3   | 5   | 8   | 9   |
+
 Predecessors:
+
 | a    | b    | c    | d    | e    |
 |------|------|------|------|------|
 | None | None | None | None | None |
@@ -27,6 +30,7 @@ Predecessors:
 | None | a    | b    | None | None |
 | None | a    | b    | c    | None |
 | None | a    | b    | c    | d    |
+
 ### Floyd-Warshall algorithm for negative cycle detection
 Floyd-Warshall algorithm also introduces the inductive approach to the shortest path problem solution. On every step it looks for possible shortest path between all pairs of vertices in a graph, which uses one selected node as intermediate pitstop. It operates with a matrix `|V|` by `|V|`, where each element contains shortest path distance between `i`th and `j`th vertex of a graph on current step.
 1. **Initialization**. On a step 0 adjacency matrix is copied to distance matrix. Predecessor matrix contains elements `predecessor_ij` where `predecessor_ij` - vertex `j` if there edge from `j` to `i`.
