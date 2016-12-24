@@ -10,7 +10,7 @@ In this implementation we choosed to variant where we are choosing "sourse" node
 
 For a given source node in the graph, the algorithm finds the shortest path between that node and every other. It can also be used for finding the shortest paths from a single node to a single destination node by stopping the algorithm once the shortest path to the destination node has been determined. For example, if the nodes of the graph represent cities and edge path costs represent driving distances between pairs of cities connected by a direct road, Dijkstra's algorithm can be used to find the shortest route between one city and all other cities. As a result, the shortest path algorithm is widely used in network routing protocols.
 
-## Description of the Algorithm
+## Description of the algorithm
 
 Let the starting node be called **source node**. The **distance of node A** be the distance from the **source node** to A. The main idea of Dijkstra's algorithm, is that we assign the shortest distances from **source node** to each other node as some value (for example **infinity**) and try to improve this value step by step.
 
@@ -22,6 +22,8 @@ Let the starting node be called **source node**. The **distance of node A** be t
 6. Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new "current node", and go back to step 3.
 
 ## Implementation
+
+### Straightforward
 
 As we said our implementation have been done in python language. 
 
@@ -42,4 +44,21 @@ This is a part of the code, where all diffrient variants of dijkstra algorithm h
                     min_node = node
         if min_node is None:
             break
+```
+This part show why **straightforward** impolementation not very efficient. This part just trying to find min weighted node among unvisited nodes in the graph (point 3 in the **Description of the algorithm**).
+
+The code below it's the main part of dijkstra's algorithm. it's just looking for the shortest path from our point to other.
+```python
+        nodes.remove(min_node)
+        current_weight = visited[min_node]
+
+        for edge in graph.edges[min_node]:
+            try:
+                weight = current_weight + graph.weights[(min_node, edge)]
+            except:
+                continue
+            if edge not in visited or weight < visited[edge]:
+                visited[edge] = weight
+                path[edge] = min_node
+    return (visited, path)
 ```
