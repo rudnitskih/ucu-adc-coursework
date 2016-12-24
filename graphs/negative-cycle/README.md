@@ -13,6 +13,7 @@ This algorithms uses at most `O(|V|*|E|)` operations in the main loop for the wo
 For example, consider graph with 4 edges and 5 vertices `(d,e, 1),(c,d, 3),(b,c, 2),(a,b,3)` with source vertex `a`.
 
 #### Distance iterations
+
 | a | b   | c   | d   | e   |
 |---|-----|-----|-----|-----|
 | 0 | inf | inf | inf | inf |
@@ -22,6 +23,7 @@ For example, consider graph with 4 edges and 5 vertices `(d,e, 1),(c,d, 3),(b,c,
 | 0 | 3   | 5   | 8   | 9   |
 
 #### Predecessors iteration
+
 | a    | b    | c    | d    | e    |
 |------|------|------|------|------|
 | None | None | None | None | None |
