@@ -117,9 +117,14 @@ int main() {
     int mode;
     unsigned char flags;
 
+    std::clock_t begin = std::clock();
+    std::clock_t end = clock();
+
+    double elapsed_secs = double(end - begin);
+    std::cout << "TIME(sec): " << elapsed_secs << std::endl << std::endl;
+
     std::ofstream ofs;
-    system("pwd");
-    system("exec rm -r ../results/*");
+    system("exec find ../program-results -type f -name '*.csv' -delete");
 
     std::cout << "Choose data:\n 1 - Reals \n 2 - Dates \n 3 - Both \n";
     std::cin >> dataType;
@@ -135,7 +140,7 @@ int main() {
     if (mode == 1) {
         choseSortProcesses(flags);
     } else {
-        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 200000, 20);
+        std::vector<unsigned int> sizes = getSortVectorsSizes(10000, 300000, 30);
 
         for(std::vector<unsigned int>::iterator it = sizes.begin();
             it != sizes.end();
