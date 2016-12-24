@@ -31,7 +31,7 @@ def add_negative_cycle(adj_matrix, min_weight, max_weight):
     n = adj_matrix.shape[0]
 
     # select k random vertices
-    k = randint(2, n/10)
+    k = randint(2, max(n/10, 3))
     cycle = []
     for i in range(k):
         random_vertice = randint(0, n-1)
