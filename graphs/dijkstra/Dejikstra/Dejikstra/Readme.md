@@ -24,3 +24,8 @@ Let the starting node be called **source node**. The **distance of node A** be t
 ## Implementation
 
 As we said our implementation have been done in python language. 
+
+We wrote graph data structure and function dijkstra which takes 2 parameters:
+'''python
+def dijkstra(graph, initial):
+'''
