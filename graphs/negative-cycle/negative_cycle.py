@@ -108,46 +108,45 @@ def bellman_ford(n, edges):
     return None, op
 
 
-def floyd_warshall(vertices, adj_dictionary):
+def floyd_warshall(adj_matrix):
     # init working structures
-    n = len(vertices)
+    n = adj_matrix.shape[0]
     distance = np.empty((n, n))
     predecessor = np.empty((n, n), dtype='string')
     distance[:] = np.infty
 
-    # step 0
-    for i in range(n):
-        distance[i, i] = 0
-        vertice = vertices[i]
-        adj = adj_dictionary[vertice]
-        for vertice2, weight in adj.items():
-            i2 = vertices.index(vertice2)
-            distance[i, i2] = weight
-            predecessor[i, i2] = vertice2
+    # initialization
+    for v1 in range(n):
+        distance[v1, v1] = 0
+        predecessor[v1, v1] = v1
+        for v2 in range(n):
+            weight = adj_matrix[v1, v2]
+            distance[v2, v1] = weight
+            predecessor[v2, v1] = v1
 
     # next steps
     for i in range(n):
-        pitstop = vertices[i]
-        for j1 in range(n):
-            for j2 in range(n):
-                distance_with_pitstop = distance[j1, i] + distance[i, j2]
-                if distance_with_pitstop < distance[j1, j2]:
-                    distance[j1, j2] = distance_with_pitstop
-                    predecessor[j1, j2] = pitstop
+        pitstop = i
+        for v2 in range(n):
+            for v1 in range(n):
+                distance_with_pitstop = distance[v2, i] + distance[i, v1]
+                if distance_with_pitstop < distance[v2, v1]:
+                    distance[v2, v1] = distance_with_pitstop
+                    predecessor[v2, v1] = pitstop
 
     # check the actual negative cycle
     for i in range(n):
         diagonal_weight = distance[i, i]
         if diagonal_weight < 0:
             # we have a negative cycle! let's trace it back
-            current_vertice = vertices[i]
+            current_vertice = i
             current_vertice_index = i
             previous_vertice_index = i
             cycle = [current_vertice]
             while predecessor[previous_vertice_index, current_vertice_index] not in cycle:
                 current_vertice = predecessor[previous_vertice_index, current_vertice_index]
                 previous_vertice_index = current_vertice_index
-                current_vertice_index = vertices.index(current_vertice)
+                current_vertice_index = current_vertice
                 cycle.append(current_vertice)
 
             return cycle

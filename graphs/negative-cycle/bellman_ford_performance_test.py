@@ -29,7 +29,7 @@ errors = 0
 #             u.save_test_result("positive1.txt", vertices, len(edges), end - start, op)
 #         print errors
 
-for vertices in range(100, 800, 100):
+for vertices in range(800, 900, 100):
     for connectivity in np.arange(0.0, 1.25, 0.25):
         # generate graph without negative cycles
         adj_matrix = u.generate_test_graph(vertices, connectivity, 0.1, 10)
