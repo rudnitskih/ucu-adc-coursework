@@ -3,3 +3,4 @@ cpp-sources/obj
 graphs/negative-cycle/.idea/
 *.pyc
 *.graph
+graphs/negative-cycle/.ipynb_checkpoints/

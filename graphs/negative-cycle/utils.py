@@ -8,7 +8,7 @@ def generate_test_graph(n, connectivity, min_weight, max_weight):
     adj_matrix[:] = np.infty
     for v1 in range(n):
         for v2 in range(n):
-            if v1 != v2 and uniform(0, 1) <= connectivity:
+            if v1 != v2 and uniform(0, 1) < connectivity:
                 weight = uniform(min_weight, max_weight)
                 adj_matrix[v1, v2] = weight
     return adj_matrix
@@ -31,7 +31,7 @@ def add_negative_cycle(adj_matrix, min_weight, max_weight):
     n = adj_matrix.shape[0]
 
     # select k random vertices
-    k = randint(2, n / 4)
+    k = randint(2, n/10)
     cycle = []
     for i in range(k):
         random_vertice = randint(0, n-1)
@@ -106,3 +106,9 @@ def save_time_stats(file_name, dict):
     with open(file_name, "w") as f:
         for point, (duration, times) in dict.items():
             f.write("%s: %.12f, %d, %.12f\n"%(point, duration, times, duration/times))
+
+
+def save_test_result(file_name, vertices, connectivity, duration, op):
+    with open(file_name, "a+") as f:
+        line = "%d\t%d\t%.3f\t%d\t%d\t%d\n" % (vertices, connectivity, duration, op[0], op[1], op[2])
+        f.write(line)
