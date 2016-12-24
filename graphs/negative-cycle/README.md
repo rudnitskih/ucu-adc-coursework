@@ -11,7 +11,8 @@ This algorithm uses similar principle of vertex relaxation, in which approximati
 
 This algorithms uses at most `O(|V|*|E|)` operations in the main loop for the worst case. In the best case, if all egdes are sorted in order of distance from source vertex, it will use `O(|E|)` operations.
 For example, consider graph with 4 edges and 5 vertices `(d,e, 1),(c,d, 3),(b,c, 2),(a,b,3)` with source vertex `a`.
-Distance:
+
+#### Distance iterations
 | a | b   | c   | d   | e   |
 |---|-----|-----|-----|-----|
 | 0 | inf | inf | inf | inf |
@@ -19,7 +20,8 @@ Distance:
 | 0 | 3   | 5   | inf | inf |
 | 0 | 3   | 5   | 8   | inf |
 | 0 | 3   | 5   | 8   | 9   |
-Predecessors:
+
+#### Predecessors iteration
 | a    | b    | c    | d    | e    |
 |------|------|------|------|------|
 | None | None | None | None | None |
@@ -27,12 +29,15 @@ Predecessors:
 | None | a    | b    | None | None |
 | None | a    | b    | c    | None |
 | None | a    | b    | c    | d    |
+
+
 ### Floyd-Warshall algorithm for negative cycle detection
 Floyd-Warshall algorithm also introduces the inductive approach to the shortest path problem solution. On every step it looks for possible shortest path between all pairs of vertices in a graph, which uses one selected node as intermediate pitstop. It operates with a matrix `|V|` by `|V|`, where each element contains shortest path distance between `i`th and `j`th vertex of a graph on current step.
 1. **Initialization**. On a step 0 adjacency matrix is copied to distance matrix. Predecessor matrix contains elements `predecessor_ij` where `predecessor_ij` - vertex `j` if there edge from `j` to `i`.
 2. **Main loop**. On each iteration algorithm consequently select one vertice `p` to be used as a pitstop. Then it checks each pair of vertices (each element of a distance matrix) if a path from vertex `i` to vertex `j` (respective to the matrix row and column) which uses vertex `p` shorter than current distance between `i` and `j`. If yes, distance between `i` and `j` updated with vertex `p` set a predecessor. In terms of exact computational operations, algorithm just checks if `distance[i][p] + distance[p][j] < distance[i][j]`.
 3. **Negative cycle check**. Initially `distance[i,i]` for `i=1..|V|` is equal to zero, because it is distance from vertex `i` to itself. During the main loop, algorithm consequently revises distances between all vertices, and if vertex `i` is a part of a negative cycle, distance from `i` to `i` itself becames less then zero. Thus algorithm could just check all diagonal entries of the distance matrix to find negative cycle in the graph.
 
+In the main loop algorithm perform exactly `|V|*|V|*|V|` iteration for any case, so the best computational approximation would be `Omega(|V|^3)`.
 
 
 # Credits
