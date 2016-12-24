@@ -1,11 +1,11 @@
 #Introduction
 
-This course work was prepared by masters of Data Science program Ukrainian Catholic University in the 2016 year. The report is a result of listening "Algorithms and Data Structures" course. 
+This coursework was prepared by masters of Data Science program Ukrainian Catholic University in 2016 year. The report is a result of listening "Algorithms and Data Structures" course. 
 
-## The importance of of the course for us
-There is an opinion that today Software Developer should not know how algorithms work. Every algorithm or data structures already exists, and the developer can just reuse them. 
+## The importance of the course for us
+There is an opinion that today Software Developer should not know how algorithms work. Every algorithm or data structures already exist, and the developer can just reuse them. 
 
-Data Science field has the same problem: anyone can pick up a dataset, follow a Youtube video and fit a model in R, Python, etc. No one really needs to know the math behind it to be able to get a result.
+Data Science field has the same problem: anyone can pick up a dataset, follow a YouTube video and fit a model in R, Python, etc. No one really needs to know the math behind it to be able to get a result.
 
 However, that doesn't mean that it is the right or the best result. It is just a result. Maybe it's the wrong model for the question or data, maybe it's not (and often won't be) validated.
 
@@ -13,13 +13,13 @@ It is the same with algorithms and data structures. If you can write a couple of
 
 Analyzing data is a huge task. It requires a lot of logic, and if you have the correct data structures in place, then it would add the efficiency to your dataset. Definitely, you can use distributed computing to make your life easier, but it's critical to have the right algorithm in place. Otherwise, it will take a lot longer than developer think. But you can successfully finish your task regarding accuracy by using proper code structure and logic too.
 
-Every developer should know about arrays, key value pairs, hash table, dictionary, queues, stack as he would use them a lot. Study threads too so you can analyze multiple files at the same time by running in threads. So it comes down to 1 thing, if you know the data structures and where to use them, you can also implement them in the right place while analyzing data.
+Every developer should know about arrays, key value pairs, hash table, dictionary, queues, and stack as he would use them a lot. Study threads too so you can analyze multiple files at the same time by running in threads. So it comes down to 1 thing, if you know the data structures and where to use them, you can also implement them in the right place while analyzing data.
 A data scientist with less knowledge about software engineering is limited than otherwise.
 
 Nowadays, with the tools and information that are available, is no longer a matter of doing something, but a matter doing it well. That kind of knowledge is the differentiating factor between average and best developers.
 
 ## Structure of this course work
-Our group has a number #1. Hense, we have **Variant 1** in **Advanced Sorting** part and **Variant 6** in **Algorithms on Graphs**. 
+Our group has a number #1. Hence, we have **Variant 1** in **Advanced Sorting** part and **Variant 6** in **Algorithms on Graphs**. 
 The report contains following parts:
 
 - **Introduction**, you are reading now this part.
@@ -31,8 +31,8 @@ The report contains following parts:
 
 Our team consists of 3 students who have done following parts:
 
-- Anatolii Stehnii - has implemented "Negative Weight Cycle Detection" and written "Conclusions".
-- Dmytro Rudnytskykh - "Sorting" part and "Introduction".
+- Anatolii Stehnii - has implemented "Negative Weight Cycle Detection" and written "Conclusions" section.
+- Dmytro Rudnytskykh - has implemented "Sorting" part and written "Introduction".
 - Mykola Mykhalych - "Problem 1: Dijkstra's Shortest-Path Algorithm" and has compiled all parts together.
 
 
