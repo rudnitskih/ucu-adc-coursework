@@ -1,11 +1,13 @@
 #Introduction
 
-This course work was prepared by masters of Data Science program Ukrainian Catholic University in the 2016 year. The report is a result of listening "Algorithms and Data Structures" course. 
+This course work was prepared by masters of Data Science program Ukrainian Catholic University in the 2016 year. The report is a result of listening "Algorithms and Data Structures" course.
+
+All files relate to this project are hosted on [GitHub](https://github.com/rudnitskih/ucu-adc-coursework). This report was created using Markdown language; please read [original file](https://github.com/rudnitskih/ucu-adc-coursework/blob/master/final_report.md) because some formatting can be wrong in this PDF file. 
 
 ## The importance of of the course for us
 There is an opinion that today Software Developer should not know how algorithms work. Every algorithm or data structures already exists, and the developer can just reuse them. 
 
-Data Science field has the same problem: anyone can pick up a dataset, follow a Youtube video and fit a model in R, Python, etc. No one really needs to know the math behind it to be able to get a result.
+Data Science field has the same problem: anyone can pick up a dataset, follow a YouTube video and fit a model in R, Python, etc. No one really needs to know the math behind it to be able to get a result.
 
 However, that doesn't mean that it is the right or the best result. It is just a result. Maybe it's the wrong model for the question or data, maybe it's not (and often won't be) validated.
 
@@ -19,7 +21,7 @@ A data scientist with less knowledge about software engineering is limited than 
 Nowadays, with the tools and information that are available, is no longer a matter of doing something, but a matter doing it well. That kind of knowledge is the differentiating factor between average and best developers.
 
 ## Structure of this course work
-Our group has a number #1. Hense, we have **Variant 1** in **Advanced Sorting** part and **Variant 6** in **Algorithms on Graphs**. 
+Our group has a number #1. Hence, we have **Variant 1** in **Advanced Sorting** part and **Variant 6** in **Algorithms on Graphs**. 
 The report contains following parts:
 
 - **Introduction**, you are reading now this part.
