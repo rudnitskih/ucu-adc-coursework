@@ -29,3 +29,17 @@ We wrote graph data structure and function dijkstra which takes 2 parameters:
 ``` python
 def dijkstra(graph, initial):
 ```
+This is a part of the code, where all diffrient variants of dijkstra algorithm have difrence:
+``` python
+ nodes = set(graph.nodes)
+    while nodes:
+        min_node = None
+        for node in nodes:
+            if node in visited:
+                if min_node is None:
+                    min_node = node
+                elif visited[node] < visited[min_node]:
+                    min_node = node
+        if min_node is None:
+            break
+```
