@@ -62,3 +62,33 @@ The code below it's the main part of dijkstra's algorithm. it's just looking for
                 path[edge] = min_node
     return (visited, path)
 ```
+
+### Heap-based
+
+
+The variant of algorihm don't need to look for min weithet node using loop, because we're using heap-based queue. Which on each step give us the node with smollest weight, below you can see code of implementation.
+```python
+def lst_dijkstra_with_heap(graph, source):
+    dist = {}
+    prev = {}
+    dist[source] = 0
+    unvisited = []
+    nodes = graph.nodes
+
+    for node in nodes:
+        if node != source:
+            dist[node] = float('inf')
+            prev[node] = None
+        heappush(unvisited,(dist[node], node))
+
+    while unvisited:
+        min_node = heappop(unvisited)[1]
+        for node_neighbours in graph.edges[min_node]:
+            tmp = dist[min_node] + graph.weights[(min_node, node_neighbours)]
+            if tmp < dist[node_neighbours]:
+                dist[node_neighbours] = tmp
+                prev[node_neighbours] = min_node
+                heappush(unvisited, (dist[node_neighbours], node_neighbours))
+
+    return dist, prev
+```
