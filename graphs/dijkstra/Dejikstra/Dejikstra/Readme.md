@@ -92,3 +92,10 @@ def lst_dijkstra_with_heap(graph, source):
 
     return dist, prev
 ```
+## Theoretical performance comparation
+
+|                        | Straightforwars   | Heap-Based      |
+| ---------------------- | ----------------- | --------------- |
+| Worst-case performance |    O(e + v^2)     | O((e+v)log(v))  |
+| Average performance    |    O(e + v^2)     | O((e+v)log(v))  |
+| Best-case performance  |    O(e + v^2)     | O((e+v)log(v))  |
