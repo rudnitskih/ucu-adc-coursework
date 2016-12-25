@@ -99,3 +99,6 @@ def lst_dijkstra_with_heap(graph, source):
 | Worst-case performance |    O(e + v^2)     | O((e+v)log(v))  |
 | Average performance    |    O(e + v^2)     | O((e+v)log(v))  |
 | Best-case performance  |    O(e + v^2)     | O((e+v)log(v))  |
+
+## Result
+
