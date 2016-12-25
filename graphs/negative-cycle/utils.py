@@ -108,7 +108,7 @@ def save_time_stats(file_name, dict):
             f.write("%s: %.12f, %d, %.12f\n"%(point, duration, times, duration/times))
 
 
-def save_test_result(file_name, vertices, connectivity, duration, op):
+def save_test_result(file_name, vertices, edges, duration, op):
     with open(file_name, "a+") as f:
-        line = "%d\t%d\t%.3f\t%d\t%d\t%d\n" % (vertices, connectivity, duration, op[0], op[1], op[2])
+        line = "%d\t%d\t%.3f\t%d\t%d\t%d\n" % (vertices, edges, duration, op[0], op[1], op[2])
         f.write(line)

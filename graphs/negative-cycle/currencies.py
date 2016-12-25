@@ -25,5 +25,4 @@ def convert_currencies_to_graph(file_path):
 
         return vertices, adj_list
 
-edges, vertices = convert_currencies_to_graph("rates.txt")
-u.save_graph_to_file(edges, vertices, "rates.graph")
+edges, vertices = convert_currencies_to_graph("data/rates.txt")
