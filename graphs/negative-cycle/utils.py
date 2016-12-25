@@ -128,6 +128,7 @@ def read_test_result(file_name):
             vertices = int(data[0])
             duration = float(data[1])
             op = int(data[2])
-            results.append([vertices, duration, op])
+            op_theory = float(data[3])
+            results.append([vertices, duration, op, op_theory])
 
     return np.array(results).T
