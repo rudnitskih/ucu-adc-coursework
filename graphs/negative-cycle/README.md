@@ -101,15 +101,11 @@ All charts can be found in [images](https://github.com/rudnitskih/ucu-adc-course
 ### Bellman-Ford performance
 ![Bellman-Ford, connectivity 0.1](./images/bf_0.10.png "Bellman-Ford, connectivity 0.1")
 ![Bellman-Ford, connectivity 0.1](./images/bf_0.25.png "Bellman-Ford, connectivity 0.25")
-![Bellman-Ford, connectivity 0.1](./images/bf_0.50.png "Bellman-Ford, connectivity 0.5")
-![Bellman-Ford, connectivity 0.1](./images/bf_0.75.png "Bellman-Ford, connectivity 0.75")
 ![Bellman-Ford, connectivity 0.1](./images/bf_1.00.png "Bellman-Ford, connectivity 1.0")
 As you can see, Bellman-Ford number of operation and execution time drastically increases with the increase of connectivity parameter. The same graph with 800 vertices processed in ~ 0.6 seconds for connectivity 0.1 and in 900 seconds for connectivity 1.0 (dense graph).
 ### Floyd-Warshall performance
 ![Floyd-Warshall, connectivity 0.1](./images/fw_0.10.png "Floyd-Warshall, connectivity 0.1")
 ![Floyd-Warshall, connectivity 0.1](./images/fw_0.25.png "Floyd-Warshall, connectivity 0.25")
-![Floyd-Warshall, connectivity 0.1](./images/fw_0.50.png "Floyd-Warshall, connectivity 0.5")
-![Floyd-Warshall, connectivity 0.1](./images/fw_0.75.png "Floyd-Warshall, connectivity 0.75")
 ![Floyd-Warshall, connectivity 0.1](./images/fw_1.00.png "Floyd-Warshall, connectivity 1.0")
 Floyd-Warshall performance also depends on the graph connectivity, but with another effect. It takes 300 seconds to process a sparse graph with connectivity 0.1, whereas for connectivity 0.25 and bigger it detects a negative cycle in 0.7 seconds. It comes from the nature of our Floyd-Warshall implementation with early stopping feature on cycle detection: the more graph has edges, the higher number of negative cycles in it, the faster graph would stop. Actually, it depends not on connectivity itself, but on a density of negative cycles in a graph.
 
@@ -117,8 +113,7 @@ Floyd-Warshall performance also depends on the graph connectivity, but with anot
 ![Comparison, connectivity 0.1](./images/bf_fw_0.10.png "Comparison, connectivity 0.1")
 ![Comparison, connectivity 0.1](./images/bf_fw_0.25.png "Comparison, connectivity 0.25")
 ![Comparison, connectivity 0.1](./images/bf_fw_0.50.png "Comparison, connectivity 0.5")
-![Comparison, connectivity 0.1](./images/bf_fw_0.75.png "Comparison, connectivity 0.75")
-![Comparison, connectivity 0.1](./images/bf_fw_1.00.png "Comparison, connectivity 1.0")
+
 
 In comparison performance of the algorithms are so different, that you can see only one line at pictures, another lies on the x-axis. For sparse data Bellman-Ford shows a much better result. However, on dense data performance of Floyd-Warshall has significant advance.
 
