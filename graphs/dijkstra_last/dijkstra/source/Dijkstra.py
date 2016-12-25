@@ -3,36 +3,50 @@ from collections import deque, defaultdict
 from heapq import *
 
 def dijkstra(graph, initial):
+    value_comparison = 0
+    value_overhead = 0
     visited = {initial: 0}
+    value_overhead += 1
     path = {}
-
+    value_overhead += 1
     nodes = set(graph.nodes)
-    k = 0
+    value_overhead += 1
     while nodes:
-        # k= k +1
-        # print 'k' +  str(k)
+        value_overhead += 1
         min_node = None
         for node in nodes:
+            value_overhead += 1
             if node in visited:
+                value_overhead += 1
                 if min_node is None:
+                    value_comparison += 1
+                    value_overhead += 1
                     min_node = node
                 elif visited[node] < visited[min_node]:
+                    value_comparison += 1
                     min_node = node
+                    value_overhead += 1
+        value_overhead += 1
         if min_node is None:
             break
-
+        value_comparison += 1
         nodes.remove(min_node)
+        value_overhead += 1
         current_weight = visited[min_node]
 
         for edge in graph.edges[min_node]:
+            value_comparison+= 1
             try:
+                value_overhead += 1
                 weight = current_weight + graph.weights[(min_node, edge)]
             except:
                 continue
             if edge not in visited or weight < visited[edge]:
+                value_comparison += 2
+                value_overhead += 2
                 visited[edge] = weight
                 path[edge] = min_node
-    return (visited, path)
+    return (visited, path, value_comparison, value_overhead)
 
 def shortest_path(graph, dijkstra_output ,initial, destination):
     if len(graph.nodes) <= 1 or initial not in graph.nodes or destination not in graph.nodes:
@@ -53,36 +67,6 @@ def shortest_path(graph, dijkstra_output ,initial, destination):
         return visited[destination], list(full_path)
 
 def dijkstra_with_heap(graph, initial, t):
-    # visited = []
-    # heappush(visited, (0, initial))
-    # path = {}
-    #
-    # nodes = set(graph.nodes)
-    #
-    # while nodes:
-    #     min_node = None
-    #     for node in nodes:
-    #         if node in visited:
-    #             if min_node is None:
-    #                 min_node = node
-    #             elif visited[node] < visited[min_node]:
-    #                 min_node = node
-    #     if min_node is None:
-    #         break
-    #
-    #     nodes.remove(min_node)
-    #     current_weight = visited[min_node]
-    #
-    #     for edge in graph.edges[min_node]:
-    #         try:
-    #             weight = current_weight + graph.weights[(min_node, edge)]
-    #         except:
-    #             continue
-    #         if edge not in visited or weight < visited[edge]:
-    #             visited[edge] = weight
-    #             path[edge] = min_node
-    #
-    # return visited, path
     edges = zip(graph.weights.keys(), graph.weights.values())
 
 
@@ -113,7 +97,6 @@ def dijkstra_with_heap_base(graph, initial):
     visited_result = []
     nodes = set(graph.nodes)
     while nodes:
-        # print nodes
         min_node = heappop(visited)
         if min_node[1] not in nodes:
             min_node = heappop(visited)
@@ -131,7 +114,6 @@ def dijkstra_with_heap_base(graph, initial):
                 continue
             if edge not in visited or weight < visited[edge]:
                 heappush(visited,(weight, edge))
-                # visited[edge] = weight
                 path[edge] = min_node[1]
         visited_result.append(min_node)
 
