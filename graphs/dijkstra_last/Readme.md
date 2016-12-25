@@ -6,7 +6,7 @@ Dijkstra's algorithm is an algorithm for finding the shortest paths between node
 
 The algorithm has a lot of variants of implementation. Dijkstara's original variant found the shortest path between two nodes, but usually people fix single node as the 'source' and finds shortest paths from the source to all other nodes in the graph, producing shortest path tree or another data structure.
 
-In this implementation we choosed to variant where we are choosing "sourse" node and looking for the shortest path to the each node. To implement this algorithm we've used python language.
+In this implementation we chosen to variant where we are choosing "source" node and looking for the shortest path to the each node. To implement this algorithm we've used python language.
 
 For a given source node in the graph, the algorithm finds the shortest path between that node and every other. It can also be used for finding the shortest paths from a single node to a single destination node by stopping the algorithm once the shortest path to the destination node has been determined. For example, if the nodes of the graph represent cities and edge path costs represent driving distances between pairs of cities connected by a direct road, Dijkstra's algorithm can be used to find the shortest route between one city and all other cities. As a result, the shortest path algorithm is widely used in network routing protocols.
 
@@ -31,7 +31,7 @@ We wrote graph data structure and function dijkstra which takes 2 parameters:
 ``` python
 def dijkstra(graph, initial):
 ```
-This is a part of the code, where all diffrient variants of dijkstra algorithm have difrence:
+This is a part of the code, where all different variants of Dijkstra algorithm have difference:
 ``` python
  nodes = set(graph.nodes)
     while nodes:
@@ -45,9 +45,9 @@ This is a part of the code, where all diffrient variants of dijkstra algorithm h
         if min_node is None:
             break
 ```
-This part show why **straightforward** impolementation not very efficient. This part just trying to find min weighted node among unvisited nodes in the graph (point 3 in the **Description of the algorithm**).
+This part show why **straightforward** implementation not very efficient. This part just trying to find min weighted node among unvisited nodes in the graph (point 3 in the **Description of the algorithm**).
 
-The code below it's the main part of dijkstra's algorithm. it's just looking for the shortest path from our point to other.
+The code below it's the main part of Dijkstra's algorithm. it's just looking for the shortest path from our point to other.
 ```python
         nodes.remove(min_node)
         current_weight = visited[min_node]
@@ -66,7 +66,7 @@ The code below it's the main part of dijkstra's algorithm. it's just looking for
 ### Heap-based
 
 
-The variant of algorihm don't need to look for min weithet node using loop, because we're using heap-based queue. Which on each step give us the node with smollest weight, below you can see code of implementation.
+The variant of algorithm don't need to look for min weight node using loop, because we're using heap-based queue. Which on each step give us the node with smallest weight, below you can see code of implementation.
 ```python
 def lst_dijkstra_with_heap(graph, source):
     dist = {}
@@ -92,7 +92,7 @@ def lst_dijkstra_with_heap(graph, source):
 
     return dist, prev
 ```
-## Theoretical performance comparation
+## Theoretical performance comparison
 
 |                        | Straightforwars   | Heap-Based      |
 | ---------------------- | ----------------- | --------------- |
@@ -110,7 +110,7 @@ The program to compare algorithms is a console application.
 
 Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist **Edsger W. Dijkstra** in 1956 and published three years later.
 
-The algorithm has a lot of variants of implementation. Dijkstara's original variant found the shortest path between two nodes, but usually people fix single node as the 'source' and finds shortest paths from the source to all other nodes in the graph, producing shortest path tree or another data structure.
+The algorithm has a lot of variants of implementation. Dijkstra's original variant found the shortest path between two nodes, but usually people fix single node as the 'source' and finds shortest paths from the source to all other nodes in the graph, producing shortest path tree or another data structure.
 
 In this implementation we choosed to variant where we are choosing "sourse" node and looking for the shortest path to the each node. To implement this algorithm we've used python language.
 
