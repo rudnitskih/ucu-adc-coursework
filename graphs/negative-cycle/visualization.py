@@ -24,7 +24,7 @@ for connectivity in c:
     f, ax = plt.subplots()
     ax.set_title('Floyd-Warshall on graph with connectivity %.2f'%connectivity, fontsize=24)
     ax.plot(fw_r[0], fw_r[2], color="darkblue", label='Real operations estimate', marker="o", linewidth=4.)
-    ax.plot(fw_r[0], fw_r[2], color="darkred", label='Theoretical estimate', marker="^", linewidth=4.)
+    ax.plot(fw_r[0], fw_r[3], color="darkred", label='Theoretical estimate', marker="^", linewidth=4.)
     ax.set_ylabel('No of operations', fontsize=18)
     ax.set_xlabel('No of vertices', fontsize=18)
     ax.legend(loc='upper left', shadow=True)
