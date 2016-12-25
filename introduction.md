@@ -2,7 +2,7 @@
 
 This coursework was prepared by masters of Data Science program Ukrainian Catholic University in 2016 year. The report is a result of listening "Algorithms and Data Structures" course. 
 
-All files relate to this project are hosted on [GitHub](https://github.com/rudnitskih/ucu-adc-coursework). This report was created using Markdown language; please read [original file](https://github.com/rudnitskih/ucu-adc-coursework/blob/master/final_report.md) because some formatting can be wrong in this PDF file.
+All files relate to this project are hosted on [GitHub](https://github.com/rudnitskih/ucu-adc-coursework). This report was created using Markdown language; please read [original file](https://github.com/rudnitskih/ucu-adc-coursework/blob/master/readme.md) because some formatting can be wrong in this PDF file.
 
 ## The importance of the course for us
 There is an opinion that today Software Developer should not know how algorithms work. Every algorithm or data structures already exist, and the developer can just reuse them. 
