@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import utils as u
 from pylab import rcParams
-rcParams['figure.figsize'] = 12, 12
+rcParams['figure.figsize'] = 10, 6
 
 plt.style.use('ggplot')
 
@@ -17,7 +17,7 @@ for connectivity in c:
     ax.set_xlabel('No of vertices', fontsize=18)
     ax.legend(loc='upper left', shadow=True)
 
-    plt.savefig('images/bf_%.2f.png'%connectivity, dpi=300)
+    plt.savefig('images/bf_%.2f.png'%connectivity, dpi=150)
 
     fw_r = u.read_test_result("results/floyd-warshall-%.2f.txt"%connectivity)
 
@@ -29,7 +29,7 @@ for connectivity in c:
     ax.set_xlabel('No of vertices', fontsize=18)
     ax.legend(loc='upper left', shadow=True)
 
-    plt.savefig('images/fw_%.2f.png'%connectivity, dpi=300)
+    plt.savefig('images/fw_%.2f.png'%connectivity, dpi=150)
 
     f, ax = plt.subplots()
     ax.plot(bf_r[0], bf_r[1], color="darkblue", label='Bellman-Ford', linewidth=2.)
@@ -38,6 +38,6 @@ for connectivity in c:
     ax.set_title('Both algorithms on graph with connectivity %.2f' % connectivity, fontsize=24)
     ax.legend(loc='upper left', shadow=True)
 
-    plt.savefig('images/bf_fw_%.2f.png'%connectivity, dpi=300)
+    plt.savefig('images/bf_fw_%.2f.png'%connectivity, dpi=150)
 
 
