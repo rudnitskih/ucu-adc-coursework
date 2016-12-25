@@ -242,5 +242,24 @@ As we can see in our tabels both version of algorithm have Scale factor nearly c
 
 ![Image of both](./dijkstra/source/results/with_mean.png "Image of both")
 
+## Comment
 
+Loking at this graphs we can confirm our assumption about algorithm's efficiency. As we can see Heap-Based version much more faster, than  straightforward as we assumed. 
 
+As we can see number of operetions is linear depended with number of vertices as it should.
+
+![Image of lin](./dijkstra/source/results/HEAP.png "Image of lin")
+
+## Conclusions
+
+In this part, we compared version of dijkstra's algorithm: Straightforward and Heap-Based. Theoretical descriptions give us a possibility to understand general details and complexity of algorithms.
+
+At the end of this implementation we understand that it's very importand to choose right data structure for algorithm and this case really impressed us how it's important.
+
+If you want to repeat this experiment run python file __main__.py. Our framework will help you in it.
+
+## Credits:
+- Analysis of Dijkstra's Algorithm with Various Priority Queue Data Structures. Cyrus Cousins. Spring 2014
+- https://en.wikipedia.org/wiki/Dijkstra's_algorithm
+- http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
+- http://mat.uab.cat/~alseda/MasterOpt/MyL09.pdf
