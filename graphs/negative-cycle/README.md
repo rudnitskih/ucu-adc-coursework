@@ -102,7 +102,7 @@ All charts can be found in [images](https://github.com/rudnitskih/ucu-adc-course
 ![Bellman-Ford, connectivity 0.1](./images/bf_0.10.png "Bellman-Ford, connectivity 0.1")
 ![Bellman-Ford, connectivity 0.1](./images/bf_0.25.png "Bellman-Ford, connectivity 0.25")
 ![Bellman-Ford, connectivity 0.1](./images/bf_1.00.png "Bellman-Ford, connectivity 1.0")
-As you can see, Bellman-Ford number of operation and execution time drastically increases with the increase of connectivity parameter. The same graph with 800 vertices processed in ~ 0.6 seconds for connectivity 0.1 and in 900 seconds for connectivity 1.0 (dense graph).
+As you can see on charts, Bellman-Ford number of operation and execution time drastically increases with the connectivity parameter. The same graph with 800 vertices processed in ~ 0.6 seconds for connectivity 0.1 and in 900 seconds for connectivity 1.0 (dense graph).
 ### Floyd-Warshall performance
 ![Floyd-Warshall, connectivity 0.1](./images/fw_0.10.png "Floyd-Warshall, connectivity 0.1")
 ![Floyd-Warshall, connectivity 0.1](./images/fw_0.25.png "Floyd-Warshall, connectivity 0.25")
